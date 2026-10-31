@@ -1,0 +1,151 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/nosotros.css · Estilos de la página Nosotros: historia a
+   dos columnas, valores en tarjetas y proceso en línea de
+   tiempo horizontal.
+   (realizado por Martin Morfe Flores.°.)
+   ============================================================ */
+
+/* ============================================================
+   1 · HISTORIA — texto y cita editorial
+   ============================================================ */
+.historia {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--espacio-6);
+  align-items: start;
+}
+
+.historia__texto p { margin-bottom: var(--espacio-3); }
+
+/* La cita de la marca: bloque zafiro con tipografía editorial */
+.historia__cita {
+  position: sticky;
+  top: 96px;
+  margin: 0;
+  padding: var(--espacio-5);
+  background: var(--azul-zafiro-profundo);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-md);
+  /* Entrada suave, en sintonía con el resto del sitio */
+  animation: historia-aparecer 560ms var(--curva-suave) 120ms backwards;
+}
+
+@keyframes historia-aparecer {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.historia__cita blockquote {
+  font-family: var(--fuente-editorial);
+  font-size: 1.6rem;
+  line-height: 1.35;
+  color: var(--crema-cannoli);
+}
+
+.historia__cita figcaption {
+  margin-top: var(--espacio-3);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--azul-lago);
+}
+
+/* ============================================================
+   2 · VALORES — tres tarjetas numeradas
+   ============================================================ */
+.valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.valor {
+  padding: var(--espacio-5) var(--espacio-4);
+  background: var(--color-superficie);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-xs);
+  /* Elevación calma al pasar el cursor, como las tarjetas del catálogo */
+  transition:
+    transform var(--duracion-media) var(--curva-suave),
+    box-shadow var(--duracion-media) var(--curva-suave);
+}
+
+.valor:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-hover);
+}
+
+/* Número editorial de cada valor */
+.valor__numero {
+  display: block;
+  font-family: var(--fuente-editorial);
+  font-size: 2.2rem;
+  color: var(--azul-niebla);
+  /* Truco de profundidad: el número gana color al hacer hover */
+  transition: color var(--duracion-media) var(--curva-suave);
+}
+
+.valor:hover .valor__numero { color: var(--azul-lago); }
+
+.valor h3 { margin-bottom: var(--espacio-1); }
+
+.valor p { font-size: 0.95rem; color: var(--tinta-suave); }
+
+/* ============================================================
+   3 · PROCESO — línea de tiempo horizontal con hitos
+   ============================================================ */
+.proceso {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* La línea que une los pasos */
+.proceso::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 2%;
+  right: 2%;
+  height: 2px;
+  background: var(--azul-niebla);
+  border-radius: var(--radio-pill);
+}
+
+.proceso__paso { position: relative; }
+
+/* El hito (punto) sobre la línea */
+.proceso__hito {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-bottom: var(--espacio-3);
+  border-radius: 50%;
+  background: var(--color-superficie);
+  border: 3px solid var(--azul-zafiro);
+  /* Pulso suave: la línea de tiempo se siente viva */
+  animation: latir-hito 2.6s ease-in-out infinite;
+}
+
+@keyframes latir-hito {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(56, 99, 149, 0.30); }
+  50%      { box-shadow: 0 0 0 9px rgba(56, 99, 149, 0); }
+}
+
+/* Los hitos alternan el pulso para dar ritmo al recorrido */
+.proceso__paso:nth-child(2) .proceso__hito { animation-delay: 320ms; }
+.proceso__paso:nth-child(3) .proceso__hito { animation-delay: 640ms; }
+.proceso__paso:nth-child(4) .proceso__hito { animation-delay: 960ms; }
+
+.proceso__paso h3 { margin-bottom: var(--espacio-1); }
+
+.proceso__paso p { font-size: 0.92rem; color: var(--tinta-suave); }

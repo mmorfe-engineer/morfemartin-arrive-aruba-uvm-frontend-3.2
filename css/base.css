@@ -1,0 +1,244 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   Diseño web con HTML & CSS
+   ------------------------------------------------------------
+   css/base.css · Sistema de diseño: tokens, reset y tipografía
+   (realizado por Martin Alejandro Morfe Carballo)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1 · TOKENS DE DISEÑO (custom properties)
+   Paleta y valores tomados del sistema de identidad de la
+   marca Arrive Aruba, proyecto propio del autor.
+   ------------------------------------------------------------ */
+:root {
+  /* — Colores de marca — */
+  --azul-zafiro: #386395;        /* color primario de la marca */
+  --azul-zafiro-profundo: #2c4e78;
+  --azul-lago: #5f8bb8;          /* color secundario */
+  --azul-niebla: rgba(95, 139, 184, 0.22);
+  --crema-cannoli: #f0f0e5;      /* superficie neutra principal */
+  --blanco-superficie: #ffffff;
+
+  /* — Tinta de texto (zafiro oscurecido: nunca negro puro) — */
+  --tinta: #1c2b3a;
+  --tinta-suave: #4a5b6c;
+
+  /* — Acentos de temporada (solo detalles, nunca dominantes) — */
+  --naranja-mock: #f5a169;
+  --verde-justo: #92af88;
+
+  /* — Roles semánticos — */
+  --color-fondo: var(--crema-cannoli);
+  --color-superficie: var(--blanco-superficie);
+  --color-primario: var(--azul-zafiro);
+  --color-enlace: var(--azul-zafiro);
+  --color-exito: #6f8f66;
+  --color-error: #b4552f;
+
+  /* — Espaciado (ritmo base de 8 px) — */
+  --espacio-1: 8px;
+  --espacio-2: 16px;
+  --espacio-3: 24px;
+  --espacio-4: 32px;
+  --espacio-5: 48px;
+  --espacio-6: 64px;
+  --espacio-7: 96px;
+
+  /* — Radios de borde — */
+  --radio-md: 14px;
+  --radio-lg: 22px;
+  --radio-pill: 999px;
+
+  /* — Bordes — */
+  --borde-fino: 1px solid rgba(56, 99, 149, 0.16);
+  --borde-medio: 2px solid rgba(56, 99, 149, 0.24);
+
+  /* — Sombras (elevación teñida de zafiro, nunca negra) — */
+  --sombra-xs: 0 1px 3px rgba(56, 99, 149, 0.10);
+  --sombra-sm: 0 2px 8px rgba(56, 99, 149, 0.12);
+  --sombra-md: 0 6px 18px rgba(56, 99, 149, 0.14);
+  --sombra-lg: 0 14px 34px rgba(56, 99, 149, 0.18);
+  --sombra-hover: 0 18px 40px rgba(56, 99, 149, 0.22);
+
+  /* — Movimiento (calmo y seguro, ease-out) — */
+  --duracion-rapida: 160ms;
+  --duracion-media: 280ms;
+  --duracion-lenta: 520ms;
+  --curva-suave: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* — Tipografía (equivalentes libres de las fuentes de marca) — */
+  --fuente-texto: "Geologica", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fuente-editorial: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+}
+
+/* ------------------------------------------------------------
+   2 · RESET (normalización entre navegadores)
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* el padding nunca rompe el ancho calculado */
+}
+
+* { margin: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-fondo);
+  color: var(--tinta);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button { cursor: pointer; }
+
+/* ------------------------------------------------------------
+   3 · TIPOGRAFÍA BASE
+   ------------------------------------------------------------ */
+h1, h2, h3, h4 {
+  font-family: var(--fuente-editorial);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.6rem, 5.5vw, 4.25rem); }
+h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+h4 { font-size: 1.05rem; }
+
+p { max-width: 68ch; }
+
+a {
+  color: var(--color-enlace);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--duracion-rapida) var(--curva-suave);
+}
+
+a:hover { color: var(--azul-zafiro-profundo); }
+
+/* Ceja / etiqueta superior: mayúsculas espaciadas, voz de marca */
+.ceja {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--azul-lago);
+  margin-bottom: var(--espacio-2);
+}
+
+/* Párrafo introductorio amplio */
+.introduccion {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--tinta-suave);
+  max-width: 56ch;
+}
+
+/* Estrella de la marca como puntuación editorial */
+.estrella { color: var(--naranja-mock); }
+
+/* ------------------------------------------------------------
+   4 · UTILIDADES DE MAQUETA
+   ------------------------------------------------------------ */
+.contenedor {
+  width: min(100% - 2rem, 1160px);
+  margin-inline: auto;
+}
+
+.seccion { padding-block: var(--espacio-7); }
+
+/* Los destinos de enlaces internos respiran por debajo de la
+   cabecera fija: sin este margen, el ancla queda escondida
+   detrás de la barra sticky. */
+main,
+[id] {
+  scroll-margin-top: 88px;
+}
+
+/* Bandas alternas para el ritmo vertical de la página */
+.banda-blanca {
+  background-color: var(--color-superficie);
+  border-block: var(--borde-fino);
+}
+
+/* Encabezado de sección reutilizable */
+.cabecera-seccion {
+  max-width: 640px;
+  margin-bottom: var(--espacio-5);
+}
+
+.cabecera-seccion--centrada {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Contenido solo para lectores de pantalla (accesibilidad) */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Enlace para saltar la navegación (accesibilidad) */
+.enlace-saltar {
+  position: absolute;
+  top: -100%;
+  left: var(--espacio-2);
+  z-index: 100;
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--azul-zafiro);
+  color: #fff;
+  border-radius: var(--radio-md);
+  text-decoration: none;
+}
+
+.enlace-saltar:focus { top: var(--espacio-2); }
+
+/* ------------------------------------------------------------
+   5 · DETALLES DE ESTADO Y FOCO
+   ------------------------------------------------------------ */
+:focus-visible {
+  outline: 3px solid var(--azul-lago);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--azul-zafiro);
+  color: var(--blanco-superficie);
+}
+
+/* Respeto la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

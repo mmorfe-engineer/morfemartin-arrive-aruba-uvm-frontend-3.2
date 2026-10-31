@@ -1,0 +1,279 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/inicio.css · Estilos exclusivos de la página de inicio:
+   hero con la ventana de la marca, categorías, materialidad
+   y testimonios.
+   (realizado por Martin Alejandro Morfe Carballo)
+
+   Nota: la rejilla de productos y el llamado final se movieron
+   a css/componentes.css porque el catálogo los reutiliza.
+   ============================================================ */
+
+/* ============================================================
+   1 · HERO — la llegada a la isla
+   ============================================================ */
+.hero {
+  /* Atmósfera: degradado del amanecer construido solo con la paleta */
+  background:
+    radial-gradient(1100px 500px at 85% -10%, rgba(95, 139, 184, 0.28), transparent 60%),
+    radial-gradient(700px 420px at 8% 12%, rgba(245, 161, 105, 0.14), transparent 55%),
+    var(--crema-cannoli);
+  border-bottom: var(--borde-fino);
+}
+
+.hero__rejilla {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: var(--espacio-6);
+  padding-block: var(--espacio-7);
+}
+
+.hero h1 {
+  margin-bottom: var(--espacio-3);
+}
+
+.hero__texto .introduccion { margin-bottom: var(--espacio-4); }
+
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+
+/* --- La ventana del avión (arte CSS puro) ---
+   Un círculo con degradados radiales apilados: cielo, sol y mar.
+   La bordeamos con zafiro como el marco real de la ventanilla. */
+.hero__ventana {
+  justify-self: center;
+}
+
+.ventana {
+  position: relative;
+  width: min(320px, 30vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 14px;
+  background: var(--azul-zafiro-profundo);
+  box-shadow: var(--sombra-lg), inset 0 0 0 2px rgba(240, 240, 229, 0.25);
+}
+
+/* El paisaje interior: fotografía real de Aruba mezclada con el
+   degradado del atardecer mediante background-blend-mode. Mientras
+   la foto carga (o si falla), el degradado dibuja el mismo atardecer. */
+.ventana__mar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 62% 30%, rgba(245, 161, 105, 0.55) 0%, rgba(232, 139, 90, 0.35) 9%, transparent 26%),
+    linear-gradient(180deg, #5f8bb8 0%, #386395 46%, #2c4e78 62%, #1c2b3a 100%),
+    url("../assets/img/aruba-hero.jpg") center / cover no-repeat;
+  background-blend-mode: screen, soft-light, normal;
+  animation: mecerse 12s ease-in-out infinite alternate;
+}
+
+/* El sol se asoma lentamente: animación suave y sutil */
+.ventana__sol {
+  position: absolute;
+  top: 26%;
+  left: 56%;
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fdf0e2 0%, #f5a169 55%, transparent 72%);
+  filter: blur(1px);
+  animation: flotar 9s ease-in-out infinite alternate;
+}
+
+@keyframes mecerse {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-8px); }
+}
+
+@keyframes flotar {
+  from { transform: translate(0, 4px) scale(1); }
+  to   { transform: translate(6px, -6px) scale(1.05); }
+}
+
+/* ============================================================
+   2 · AZULEJOS DE CATEGORÍA
+   ============================================================ */
+.rejilla-categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-3);
+  margin: 0;
+  padding: 0;
+}
+
+.azulejo {
+  display: grid;
+  gap: var(--espacio-1);
+  padding: var(--espacio-4) var(--espacio-3);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+  background: var(--color-superficie);
+  text-decoration: none;
+  color: var(--tinta);
+  box-shadow: var(--sombra-xs);
+  transition:
+    transform var(--duracion-media) var(--curva-suave),
+    box-shadow var(--duracion-media) var(--curva-suave),
+    border-color var(--duracion-media) var(--curva-suave);
+}
+
+.azulejo:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-md);
+  border-color: rgba(56, 99, 149, 0.32);
+}
+
+/* Figura del azulejo: círculo tonal con la estrella de la marca */
+.azulejo__figura {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--azul-zafiro-profundo);
+  margin-bottom: var(--espacio-1);
+}
+
+.azulejo__nombre {
+  font-family: var(--fuente-editorial);
+  font-size: 1.25rem;
+}
+
+.azulejo__nota {
+  font-size: 0.88rem;
+  color: var(--tinta-suave);
+}
+
+/* ============================================================
+   3 · MATERIALIDAD (pasos numerados)
+   ============================================================ */
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.paso {
+  padding: var(--espacio-4);
+  border-left: 3px solid var(--azul-niebla);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+  box-shadow: var(--sombra-xs);
+}
+
+.paso__numero {
+  display: block;
+  font-family: var(--fuente-editorial);
+  font-size: 2rem;
+  color: var(--azul-lago);
+  margin-bottom: var(--espacio-1);
+}
+
+.paso h3 { margin-bottom: var(--espacio-1); }
+
+.paso p { font-size: 0.95rem; color: var(--tinta-suave); }
+
+/* ============================================================
+   4 · TESTIMONIOS
+   ============================================================ */
+.rejilla-testimonios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-4);
+}
+
+.testimonio {
+  padding: var(--espacio-4);
+  background: var(--crema-cannoli);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+}
+
+.testimonio blockquote {
+  font-family: var(--fuente-editorial);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.testimonio blockquote::before { content: "«"; color: var(--azul-lago); }
+.testimonio blockquote::after  { content: "»"; color: var(--azul-lago); }
+
+.testimonio figcaption {
+  margin-top: var(--espacio-2);
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}
+
+/* ============================================================
+   5 · PELÍCULA — la atmósfera de la isla
+   Banda a sangre con la fotografía del hero de la marca.
+   El movimiento es un Ken Burns dibujado con @keyframes y el
+   velo (mix-blend-mode) garantiza la lectura del lema.
+   ============================================================ */
+.pelicula {
+  position: relative;
+  min-height: 58vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: var(--borde-fino);
+  background: var(--azul-zafiro-profundo);
+}
+
+/* La fotografía cubre la banda y se mueve despacio (Ken Burns) */
+.pelicula__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+  animation: ken-burns 26s ease-in-out infinite alternate;
+}
+
+@keyframes ken-burns {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.12) translate(-1.5%, 1%); }
+}
+
+/* Velo: oscurece la fotografía donde el degradado lo pide */
+.pelicula__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(28, 43, 58, 0.12) 0%, rgba(56, 99, 149, 0.44) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* El lema flota sobre la fotografía con la tipografía editorial */
+.pelicula__lema {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: var(--espacio-4);
+  font-family: var(--fuente-editorial);
+  font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+  letter-spacing: 0.02em;
+  color: var(--crema-cannoli);
+  text-shadow: 0 2px 24px rgba(28, 43, 58, 0.6);
+  animation: aparecer 700ms var(--curva-suave) backwards;
+}
+
+/* Quien prefiere menos movimiento ve la fotografía en reposo */
+@media (prefers-reduced-motion: reduce) {
+  .pelicula__foto { animation: none; }
+}
+

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ficha de la Camisa Sunset Wharf de Arrive Aruba: materialidad, tallas y reserva directa. e-actividad 3.1.">
+  <title>Camisa Sunset Wharf · Arrive Aruba</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23386395'%20d='M12%201l2.5%207.5H22l-6%204.6%202.3%207.4L12%2016l-6.3%204.5L8%2013.1%202%208.5h7.5z'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+  <!--
+    PÁGINA DE PRODUCTO — ficha de la prenda destacada
+    (realizado por Martin Alejandro Morfe Carballo)
+  -->
+  <a class="enlace-saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__barra">
+      <a class="marca" href="index.html" aria-label="Arrive Aruba — inicio">
+        <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+        </svg>
+        <span class="marca__nombre">Arrive Aruba</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="navegacion__lista">
+          <li><a class="navegacion__enlace" href="index.html">Inicio</a></li>
+          <li><a class="navegacion__enlace" href="catalogo.html">Catálogo</a></li>
+          <li><a class="navegacion__enlace" href="formulario.html">Reserva</a></li>
+          <li><a class="navegacion__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="navegacion__enlace" href="historial.html">Mis pedidos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ====================== MIGAS ====================== -->
+    <!-- Migas de pan: orientación dentro del catálogo -->
+    <nav class="contenedor migas" aria-label="Migas de pan">
+      <ol role="list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li aria-current="page">Camisa Sunset Wharf</li>
+      </ol>
+    </nav>
+
+    <!-- ====================== FICHA DEL PRODUCTO ====================== -->
+    <section class="contenedor producto" aria-labelledby="titulo-producto">
+      <div class="producto__rejilla">
+
+        <!-- Panel visual: la colección en contexto, tres vistas del
+             editorial de la marca. El visor cambia de vista con
+             :checked — una galería que funciona entera sin JavaScript. -->
+        <figure class="producto__panel tono-zafiro">
+          <input class="producto__visor" type="radio" name="visor" id="visor-1" checked>
+          <input class="producto__visor" type="radio" name="visor" id="visor-2">
+          <input class="producto__visor" type="radio" name="visor" id="visor-3">
+
+          <div class="producto__vistas">
+            <img class="producto__foto" src="assets/img/sunset-01.jpg"
+                 alt="Editorial de la colección: el resort bajo la luz de la isla">
+            <img class="producto__foto" src="assets/img/sunset-02.jpg"
+                 alt="Editorial de la colección junto al mar">
+            <img class="producto__foto" src="assets/img/sunset-03.jpg"
+                 alt="El lema de la marca sobre el paisaje de la isla">
+          </div>
+
+          <div class="producto__pulgar" role="group" aria-label="Vistas del editorial">
+            <label for="visor-1"><img src="assets/img/sunset-01.jpg" alt="Ver el editorial del resort"></label>
+            <label for="visor-2"><img src="assets/img/sunset-02.jpg" alt="Ver el editorial de la playa"></label>
+            <label for="visor-3"><img src="assets/img/sunset-03.jpg" alt="Ver el banner de la isla"></label>
+          </div>
+          <figcaption class="solo-lectores">La colección en su contexto — editorial de la marca</figcaption>
+        </figure>
+
+        <!-- Panel de información -->
+        <div class="producto__info">
+          <p class="ceja">Camisería · Colección 2026</p>
+          <h1 id="titulo-producto">Camisa Sunset Wharf</h1>
+          <p class="producto__precio">$ 68,00</p>
+
+          <p class="producto__descripcion">
+            La camisa de la llegada: lino lavado de peso ligero, corte holgado
+            con hombros limpios y un azul zafiro que atraviesa el atardecer
+            sin perder la calma. Pensada para usarse abierta sobre cualquier
+            prenda del catálogo o cerrada para la cena en el muelle.
+          </p>
+
+          <!-- Selector de talla: botones radiales estilizados -->
+          <fieldset class="producto__tallas">
+            <legend class="campo__etiqueta">Talla</legend>
+            <div class="opciones">
+              <span class="opciones__opcion">
+                <input class="opciones__entrada" type="radio" name="talla" id="talla-s" value="S">
+                <label class="opciones__pastilla" for="talla-s">S</label>
+              </span>
+              <span class="opciones__opcion">
+                <input class="opciones__entrada" type="radio" name="talla" id="talla-m" value="M" checked>
+                <label class="opciones__pastilla" for="talla-m">M</label>
+              </span>
+              <span class="opciones__opcion">
+                <input class="opciones__entrada" type="radio" name="talla" id="talla-l" value="L">
+                <label class="opciones__pastilla" for="talla-l">L</label>
+              </span>
+              <span class="opciones__opcion">
+                <input class="opciones__entrada" type="radio" name="talla" id="talla-xl" value="XL">
+                <label class="opciones__pastilla" for="talla-xl">XL</label>
+              </span>
+            </div>
+          </fieldset>
+
+          <!-- El enlace pasa la prenda por URL para precargarla en el formulario -->
+          <a class="boton boton--primario producto__reservar"
+             href="formulario.html?prenda=Camisa%20Sunset%20Wharf">
+            Reservar esta prenda
+          </a>
+
+          <!-- Ficha técnica: tabla con los datos reales de la prenda -->
+          <table class="tabla producto__ficha">
+            <caption>Ficha técnica</caption>
+            <tbody>
+              <tr>
+                <th scope="row">Material</th>
+                <td>Lino lavado 100 %, 140 g/m²</td>
+              </tr>
+              <tr>
+                <th scope="row">Corte</th>
+                <td>Holgado, hombro caído, base recta</td>
+              </tr>
+              <tr>
+                <th scope="row">Color</th>
+                <td>Azul zafiro sobre hilo crema</td>
+              </tr>
+              <tr>
+                <th scope="row">Cuidado</th>
+                <td>Lavar en frío, secar a la sombra</td>
+              </tr>
+              <tr>
+                <th scope="row">Origen</th>
+                <td>Confeccionada en el taller de Aruba</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== PRENDAS RELACIONADAS ====================== -->
+    <section class="seccion banda-blanca" aria-labelledby="titulo-relacionadas">
+      <div class="contenedor">
+        <div class="cabecera-seccion">
+          <p class="ceja">Cierra el equipaje</p>
+          <h2 id="titulo-relacionadas">Prendas que viajan con ella</h2>
+        </div>
+
+        <div class="rejilla-productos rejilla-productos--tres">
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-crema">
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <path d="M24 8 L32 13 L40 8 L52 14 L46 27 L42 24 V66 H22 V24 L18 27 L12 14 Z"
+                        fill="#386395" opacity="0.85"/>
+                  <path d="M24 8 L32 13 L40 8 L35 16 H29 Z" fill="#f0f0e5"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Camisería</p>
+              <h3 class="tarjeta__nombre">Polo Sapphire Bay</h3>
+              <p class="tarjeta__precio">$ 54,00</p>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-lago">
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <path d="M26 4 L32 12 L38 4 L40 22 L52 66 H12 L24 22 Z"
+                        fill="#386395" opacity="0.85"/>
+                  <path d="M32 12 L44 24 H20 Z" fill="#f0f0e5" opacity="0.9"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Playa</p>
+              <h3 class="tarjeta__nombre">Vestido Cannoli Breeze</h3>
+              <p class="tarjeta__precio">$ 89,00</p>
+            </div>
+          </article>
+
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-verde">
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <ellipse cx="32" cy="52" rx="26" ry="8" fill="#2c4e78"/>
+                  <path d="M20 52 Q22 18 32 18 Q42 18 44 52 Z" fill="#386395"/>
+                  <path d="M20 52 Q32 46 44 52" stroke="#f0f0e5" stroke-width="4" fill="none"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Accesorios</p>
+              <h3 class="tarjeta__nombre">Sombrero Divi-Divi</h3>
+              <p class="tarjeta__precio">$ 36,00</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div class="pie__marca">
+          <a class="marca" href="index.html">
+            <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+            </svg>
+            <span class="marca__nombre">Arrive Aruba</span>
+          </a>
+          <p class="pie__texto">
+            Ropa resort nacida en Aruba. Adaptación académica de la identidad
+            de la marca para la e-actividad 3.1 de Frontend.
+          </p>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Explorar</h2>
+          <ul class="pie__lista">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="producto.html">Producto destacado</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Atención al pasajero</h2>
+          <ul class="pie__lista">
+            <li><a href="formulario.html">Reservar una prenda</a></li>
+            <li><a href="historial.html">Mis pedidos</a></li>
+            <li>hola@arrivearuba.isla</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pie__legal">
+        <span>© 2026 Arrive Aruba · e-actividad 3.1 · Frontend · Universidad Valle del Momboy</span>
+        <span>Hecho con HTML y CSS, sin plantillas.</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+

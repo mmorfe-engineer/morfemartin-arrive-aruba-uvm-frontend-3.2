@@ -1,0 +1,186 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/producto.css · Estilos exclusivos de la página de
+   producto: migas de pan, visor del editorial (:checked),
+   ficha del producto, selector de tallas y prendas relacionadas.
+   (realizado por Martin Alejandro Morfe Carballo)
+   ============================================================ */
+
+/* ============================================================
+   1 · MIGAS DE PAN
+   ============================================================ */
+.migas {
+  padding-block: var(--espacio-3);
+}
+
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}
+
+/* Separador de estrella entre niveles de las migas */
+.migas li:not(:last-child)::after {
+  content: "✦";
+  margin-inline: var(--espacio-1);
+  color: var(--azul-lago);
+  font-size: 0.7rem;
+}
+
+.migas a { color: var(--azul-zafiro); text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+.migas [aria-current="page"] { color: var(--tinta); font-weight: 600; }
+
+/* ============================================================
+   2 · FICHA DEL PRODUCTO
+   ============================================================ */
+.producto { padding-bottom: var(--espacio-6); }
+
+.producto__rejilla {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) 1.1fr;
+  gap: var(--espacio-6);
+  align-items: start;
+}
+
+/* Panel visual: visor del editorial con vista activa (:checked) */
+.producto__panel {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radio-lg);
+  border: var(--borde-fino);
+  box-shadow: var(--sombra-md);
+  position: sticky;
+  top: 96px;
+}
+
+/* --- Visor del editorial: galería sin JavaScript ---
+   Tres vistas apiladas que se funden con transición de opacidad;
+   el radio :checked decide cuál sube al frente. Los pulgares
+   flotan abajo con desenfoque del fondo (backdrop-filter). */
+.producto__panel { overflow: hidden; }
+
+/* El radio del visor queda fuera de la vista pero accesible al foco */
+.producto__visor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.producto__vistas {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.producto__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity var(--duracion-media) var(--curva-suave),
+    transform var(--duracion-lenta) var(--curva-suave);
+}
+
+/* La vista marcada con :checked sube al frente */
+#visor-1:checked ~ .producto__vistas .producto__foto:nth-of-type(1),
+#visor-2:checked ~ .producto__vistas .producto__foto:nth-of-type(2),
+#visor-3:checked ~ .producto__vistas .producto__foto:nth-of-type(3) {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Pulgares: banda flotante con desenfoque de la fotografía de fondo */
+.producto__pulgar {
+  position: absolute;
+  bottom: var(--espacio-3);
+  left: var(--espacio-3);
+  z-index: 1;
+  display: flex;
+  gap: var(--espacio-2);
+  padding: 6px;
+  border-radius: var(--radio-md);
+  background: rgba(240, 240, 229, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.producto__pulgar label {
+  width: 58px;
+  aspect-ratio: 1;
+  border: var(--borde-fino);
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--duracion-rapida) var(--curva-suave);
+}
+
+.producto__pulgar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.producto__pulgar label:hover { transform: translateY(-2px); }
+
+/* Pulgar activo: anillo zafiro sobre la vista en curso */
+#visor-1:checked ~ .producto__pulgar label:nth-of-type(1),
+#visor-2:checked ~ .producto__pulgar label:nth-of-type(2),
+#visor-3:checked ~ .producto__pulgar label:nth-of-type(3) {
+  border-color: var(--azul-zafiro);
+  box-shadow: 0 0 0 3px var(--azul-niebla);
+}
+
+/* Foco visible para teclado, coherente con el resto del sitio */
+#visor-1:focus-visible ~ .producto__pulgar label:nth-of-type(1),
+#visor-2:focus-visible ~ .producto__pulgar label:nth-of-type(2),
+#visor-3:focus-visible ~ .producto__pulgar label:nth-of-type(3) {
+  outline: 3px solid var(--azul-lago);
+  outline-offset: 2px;
+}
+
+/* Panel de información */
+.producto__info h1 { margin-bottom: var(--espacio-2); }
+
+.producto__precio {
+  font-family: var(--fuente-editorial);
+  font-size: 1.6rem;
+  color: var(--azul-zafiro-profundo);
+  margin-bottom: var(--espacio-3);
+}
+
+.producto__descripcion {
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-4);
+}
+
+/* Selector de tallas */
+.producto__tallas {
+  border: none;
+  margin: 0 0 var(--espacio-4);
+  padding: 0;
+}
+
+.producto__reservar { margin-bottom: var(--espacio-5); }
+
+.producto__ficha { max-width: 640px; }
+
+/* ============================================================
+   3 · PRENDAS RELACIONADAS
+   ============================================================ */
+/* Variante de tres columnas para la rejilla de productos */
+.rejilla-productos--tres {
+  grid-template-columns: repeat(3, 1fr);
+}
+

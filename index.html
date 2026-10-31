@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arrive Aruba — marketplace de ropa resort. Adaptación académica de la e-actividad 3.1: diseño web con HTML y CSS.">
+  <title>Arrive Aruba · Inicio</title>
+
+  <!-- Favicon: estrella de la marca dibujada como SVG en línea -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23386395'%20d='M12%201l2.5%207.5H22l-6%204.6%202.3%207.4L12%2016l-6.3%204.5L8%2013.1%202%208.5h7.5z'/%3E%3C/svg%3E">
+
+  <!-- Tipografías: equivalentes libres de las fuentes de marca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Hojas de estilo: base (tokens) → componentes → página actual -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+  <!--
+    PÁGINA DE INICIO (landing)
+    (realizado por Martin Alejandro Morfe Carballo)
+  -->
+  <a class="enlace-saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- ====================== CABECERA ====================== -->
+  <header class="cabecera">
+    <div class="contenedor cabecera__barra">
+      <a class="marca" href="index.html" aria-label="Arrive Aruba — inicio">
+        <!-- Estrella de la marca (marca gráfica propia) -->
+        <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+        </svg>
+        <span class="marca__nombre">Arrive Aruba</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="navegacion__lista">
+          <li><a class="navegacion__enlace" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="navegacion__enlace" href="catalogo.html">Catálogo</a></li>
+          <li><a class="navegacion__enlace" href="formulario.html">Reserva</a></li>
+          <li><a class="navegacion__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="navegacion__enlace" href="historial.html">Mis pedidos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ====================== HERO ====================== -->
+    <!-- La ventana del avión: motivo central de la marca. El paisaje
+         real de Aruba se mezcla con el degradado del atardecer usando
+         background-blend-mode; el sol y el vaivén siguen siendo CSS. -->
+    <section class="hero" aria-labelledby="titulo-principal">
+      <div class="contenedor hero__rejilla">
+        <div class="hero__texto">
+          <p class="ceja">Colección 2026 · Isla de Aruba</p>
+          <h1 id="titulo-principal">The island stays with you. <span class="estrella">✦</span></h1>
+          <p class="introduccion">
+            Ropa resort pensada para el momento en que bajas del avión y la
+            isla te recibe. Lino lavado, colores de zafiro y crema, y cortes
+            que acompañan el viaje mucho después del bronceado.
+          </p>
+          <div class="hero__acciones">
+            <a class="boton boton--primario" href="catalogo.html">Ver el catálogo</a>
+            <a class="boton boton--secundario" href="formulario.html">Reservar una prenda</a>
+          </div>
+        </div>
+
+        <figure class="hero__ventana" aria-hidden="true">
+          <div class="ventana">
+            <span class="ventana__sol"></span>
+            <span class="ventana__mar"></span>
+          </div>
+          <figcaption class="solo-lectores">Ventana del avión observando el atardecer de Aruba</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ====================== ATMÓSFERA DE LA ISLA ====================== -->
+    <!-- Banda a pantalla completa con la fotografía del hero de la
+         marca: el movimiento lento (Ken Burns) y el velo que garantiza
+         la lectura del lema son enteramente CSS. -->
+    <section class="pelicula" aria-label="Atmósfera de la isla de Aruba">
+      <img class="pelicula__foto" src="assets/img/atmosfera.jpg"
+           alt="Atmósfera de Aruba al atardecer, fotografía de la marca">
+      <div class="pelicula__velo" aria-hidden="true"></div>
+      <p class="pelicula__lema">«The island stays with you.»</p>
+    </section>
+
+    <!-- ====================== DESTACADOS ====================== -->
+    <!-- Cuatro prendas de la temporada. Las ilustraciones son
+         marcas gráficas propias dibujadas en SVG, sin fotografía. -->
+    <section class="seccion" aria-labelledby="titulo-destacados">
+      <div class="contenedor">
+        <div class="cabecera-seccion">
+          <p class="ceja">Temporada de llegada</p>
+          <h2 id="titulo-destacados">Prendas destacadas</h2>
+          <p class="introduccion">
+            Una selección pequeña y considerada: pocas piezas, bien cortadas,
+            pensadas para el calor de la isla.
+          </p>
+        </div>
+
+        <div class="rejilla-productos">
+          <!-- Camisa (protagonista: tiene página de detalle) -->
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="producto.html" aria-label="Ver detalle de la Camisa Sunset Wharf">
+              <div class="tarjeta__figura tono-zafiro">
+                <span class="etiqueta etiqueta--zafiro">Detalle</span>
+                <!-- Silueta de camisa -->
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <path d="M22 5 L32 11 L42 5 L56 11 L49 28 L43 24 V68 H21 V24 L15 28 L8 11 Z"
+                        fill="#2c4e78" opacity="0.9"/>
+                  <path d="M22 5 L32 11 L42 5 L37 14 H27 Z" fill="#f0f0e5"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Camisería</p>
+              <h3 class="tarjeta__nombre">Camisa Sunset Wharf</h3>
+              <p class="tarjeta__precio">$ 68,00</p>
+            </div>
+          </article>
+
+          <!-- Polo -->
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-crema">
+                <span class="etiqueta">Nuevo</span>
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <path d="M24 8 L32 13 L40 8 L52 14 L46 27 L42 24 V66 H22 V24 L18 27 L12 14 Z"
+                        fill="#386395" opacity="0.85"/>
+                  <path d="M24 8 L32 13 L40 8 L35 16 H29 Z" fill="#f0f0e5"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Camisería</p>
+              <h3 class="tarjeta__nombre">Polo Sapphire Bay</h3>
+              <p class="tarjeta__precio">$ 54,00</p>
+            </div>
+          </article>
+
+          <!-- Vestido -->
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-naranja">
+                <span class="etiqueta">Temporada</span>
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <path d="M26 4 L32 12 L38 4 L40 22 L52 66 H12 L24 22 Z"
+                        fill="#b4552f" opacity="0.8"/>
+                  <path d="M32 12 L44 24 H20 Z" fill="#f0f0e5" opacity="0.9"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Playa</p>
+              <h3 class="tarjeta__nombre">Vestido Cannoli Breeze</h3>
+              <p class="tarjeta__precio">$ 89,00</p>
+            </div>
+          </article>
+
+          <!-- Sombrero -->
+          <article class="tarjeta">
+            <a class="tarjeta__enlace" href="catalogo.html" aria-label="Ver el catálogo">
+              <div class="tarjeta__figura tono-verde">
+                <span class="etiqueta etiqueta--zafiro">Isla</span>
+                <svg viewBox="0 0 64 72" aria-hidden="true">
+                  <ellipse cx="32" cy="52" rx="26" ry="8" fill="#2c4e78"/>
+                  <path d="M20 52 Q22 18 32 18 Q42 18 44 52 Z" fill="#386395"/>
+                  <path d="M20 52 Q32 46 44 52" stroke="#f0f0e5" stroke-width="4" fill="none"/>
+                </svg>
+              </div>
+            </a>
+            <div class="tarjeta__cuerpo">
+              <p class="tarjeta__categoria">Accesorios</p>
+              <h3 class="tarjeta__nombre">Sombrero Divi-Divi</h3>
+              <p class="tarjeta__precio">$ 36,00</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== CATEGORÍAS ====================== -->
+    <section class="seccion banda-blanca" aria-labelledby="titulo-categorias">
+      <div class="contenedor">
+        <div class="cabecera-seccion cabecera-seccion--centrada">
+          <p class="ceja">Explorar por categoría</p>
+          <h2 id="titulo-categorias">Cuatro rincones del catálogo</h2>
+        </div>
+        <ul class="rejilla-categorias" role="list">
+          <li>
+            <a class="azulejo" href="catalogo.html">
+              <span class="azulejo__figura tono-zafiro" aria-hidden="true">✦</span>
+              <span class="azulejo__nombre">Camisería</span>
+              <span class="azulejo__nota">Lino lavado y algodón peinado</span>
+            </a>
+          </li>
+          <li>
+            <a class="azulejo" href="catalogo.html">
+              <span class="azulejo__figura tono-naranja" aria-hidden="true">✦</span>
+              <span class="azulejo__nombre">Playa</span>
+              <span class="azulejo__nota">Vestidos, shorts y sol</span>
+            </a>
+          </li>
+          <li>
+            <a class="azulejo" href="catalogo.html">
+              <span class="azulejo__figura tono-verde" aria-hidden="true">✦</span>
+              <span class="azulejo__nombre">Accesorios</span>
+              <span class="azulejo__nota">Sombreros y piezas de isla</span>
+            </a>
+          </li>
+          <li>
+            <a class="azulejo" href="catalogo.html">
+              <span class="azulejo__figura tono-lago" aria-hidden="true">✦</span>
+              <span class="azulejo__nombre">Calzado</span>
+              <span class="azulejo__nota">Sandalias para el mangle</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================== MATERIALIDAD ====================== -->
+    <section class="seccion" aria-labelledby="titulo-materialidad">
+      <div class="contenedor">
+        <div class="cabecera-seccion">
+          <p class="ceja">Cómo se hace cada prenda</p>
+          <h2 id="titulo-materialidad">Materialidad de la isla</h2>
+        </div>
+        <ol class="pasos" role="list">
+          <li class="paso">
+            <span class="paso__numero">01</span>
+            <h3>Telas que respiran</h3>
+            <p>Lino y algodón de peso ligero, prelavados para que la prenda
+               llegue suave desde el primer uso.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">02</span>
+            <h3>Corte resort</h3>
+            <p>Patrones holgados pero considerados: movimiento fácil bajo el
+               sol, silueta limpia en la tarima.</p>
+          </li>
+          <li class="paso">
+            <span class="paso__numero">03</span>
+            <h3>Color de la llegada</h3>
+            <p>La paleta nace del atardecer de Aruba: zafiro profundo, lago
+               plateado y crema cannoli. Nada chillón, todo duradero.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================== TESTIMONIOS ====================== -->
+    <section class="seccion banda-blanca" aria-labelledby="titulo-testimonios">
+      <div class="contenedor">
+        <div class="cabecera-seccion cabecera-seccion--centrada">
+          <p class="ceja">Quien llegó, volvió</p>
+          <h2 id="titulo-testimonios">Palabras de la isla</h2>
+        </div>
+        <div class="rejilla-testimonios">
+          <figure class="testimonio">
+            <blockquote>
+              «La camisa Sunset acompañó todo el viaje y volvió conmigo.
+               Sigue siendo la primera que busco en el armario.»
+            </blockquote>
+            <figcaption>— Daniela R., pasajera del vuelo de las 17:40</figcaption>
+          </figure>
+          <figure class="testimonio">
+            <blockquote>
+              «Pedí el sombrero para mi hermana y terminé reservando dos.
+               El proceso fue directo y el paquete llegó sin sobresaltos.»
+            </blockquote>
+            <figcaption>— José M., habitante de las mañanas de Malmok</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== LLAMADO FINAL ====================== -->
+    <section class="llamado" aria-labelledby="titulo-llamado">
+      <div class="contenedor llamado__caja">
+        <div>
+          <p class="ceja llamado__ceja">Tu prenda te espera</p>
+          <h2 id="titulo-llamado">Reserva antes de bajar del avión.</h2>
+          <p class="llamado__texto">
+            Completa el formulario y tu pedido queda guardado en la base de
+            datos del navegador, listo para recogerlo a tu llegada.
+          </p>
+        </div>
+        <a class="boton boton--claro" href="formulario.html">Hacer una reserva</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== PIE ====================== -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div class="pie__marca">
+          <a class="marca" href="index.html">
+            <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+            </svg>
+            <span class="marca__nombre">Arrive Aruba</span>
+          </a>
+          <p class="pie__texto">
+            Ropa resort nacida en Aruba. Adaptación académica de la identidad
+            de la marca para la e-actividad 3.1 de Frontend.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="pie__titulo">Explorar</h2>
+          <ul class="pie__lista">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="producto.html">Producto destacado</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="pie__titulo">Atención al pasajero</h2>
+          <ul class="pie__lista">
+            <li><a href="formulario.html">Reservar una prenda</a></li>
+            <li><a href="historial.html">Mis pedidos</a></li>
+            <li>hola@arrivearuba.isla</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="pie__legal">
+        <span>© 2026 Arrive Aruba · e-actividad 3.1 · Frontend · Universidad Valle del Momboy</span>
+        <span>Hecho con HTML y CSS, sin plantillas.</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+

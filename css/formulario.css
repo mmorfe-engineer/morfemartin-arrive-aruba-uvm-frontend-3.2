@@ -1,0 +1,76 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/formulario.css · Estilos de la página de reserva:
+   rejilla de dos columnas, tarjeta del formulario y panel
+   explicativo de cómo funciona la base de datos.
+   (realizado por Martin Morfe Flores.°.)
+   ============================================================ */
+
+.reserva__rejilla {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--espacio-5);
+  align-items: start;
+}
+
+/* Tarjeta blanca que contiene el formulario */
+.reserva__tarjeta {
+  background: var(--color-superficie);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-sm);
+  padding: var(--espacio-5);
+  /* Entrada suave al cargar la página */
+  animation: aparecer-reserva 520ms var(--curva-suave) backwards;
+}
+
+@keyframes aparecer-reserva {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Campo de cantidad más corto: no estira toda la línea */
+.campo__entrada--corta { max-width: 160px; }
+
+/* Botón de envío ocupa el ancho disponible */
+.reserva__enviar { width: 100%; margin-top: var(--espacio-2); }
+
+/* El mensaje de éxito se destaca sobre el formulario */
+#mensaje-exito { margin-bottom: var(--espacio-3); }
+
+/* — Panel lateral: cómo funciona la reserva — */
+.reserva__panel {
+  position: sticky;
+  top: 96px;
+  padding: var(--espacio-4);
+  background: var(--crema-cannoli);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+}
+
+.reserva__panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--espacio-3);
+}
+
+.reserva__pasos {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--espacio-3);
+  color: var(--tinta-suave);
+  font-size: 0.95rem;
+}
+
+.reserva__pasos strong { color: var(--tinta); }
+
+.reserva__pasos li::marker { color: var(--azul-lago); }
+
+.reserva__privacidad {
+  margin-top: var(--espacio-4);
+  padding-top: var(--espacio-3);
+  border-top: var(--borde-fino);
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+}

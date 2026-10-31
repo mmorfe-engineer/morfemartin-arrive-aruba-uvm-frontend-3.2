@@ -1,0 +1,149 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/historial.css · Estilos de la página "Mis pedidos":
+   contador, rejilla de reservas, tarjetas de pedido y
+   estado vacío.
+   (realizado por Martin Alejandro Morfe Carballo)
+   ============================================================ */
+
+.historial__contador {
+  margin-top: var(--espacio-2);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--azul-lago);
+}
+
+/* Rejilla de pedidos: dos columnas amplias */
+.historial__rejilla {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-3);
+}
+
+/* Tarjeta de un pedido */
+.pedido {
+  background: var(--color-superficie);
+  border: var(--borde-fino);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-xs);
+  padding: var(--espacio-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  transition:
+    transform var(--duracion-media) var(--curva-suave),
+    box-shadow var(--duracion-media) var(--curva-suave),
+    opacity var(--duracion-media) var(--curva-suave);
+}
+
+.pedido:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-md);
+}
+
+/* Transición de salida al eliminar una reserva */
+.pedido--saliendo {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+}
+
+.pedido__cabecera h3 {
+  font-family: var(--fuente-editorial);
+  font-size: 1.45rem;
+}
+
+.pedido__fecha {
+  font-size: 0.82rem;
+  color: var(--tinta-suave);
+  margin-top: 4px;
+}
+
+/* Detalles: pares etiqueta–valor separados por línea fina */
+.pedido__detalles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-1);
+}
+
+.pedido__detalles li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-2);
+  padding-bottom: var(--espacio-1);
+  border-bottom: var(--borde-fino);
+  font-size: 0.92rem;
+}
+
+.pedido__etiqueta {
+  color: var(--tinta-suave);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pedido__detalles strong {
+  text-align: right;
+  font-weight: 600;
+  max-width: 60%;
+}
+
+.pedido__acciones {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botón de eliminar con tono cálido de la paleta */
+.pedido__eliminar {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  color: var(--color-error);
+  border-color: rgba(180, 85, 47, 0.45);
+}
+
+.pedido__eliminar:hover {
+  background: rgba(180, 85, 47, 0.08);
+  color: #7c3a1d;
+  transform: none;
+}
+
+/* Estado vacío: mensaje amable centrado */
+.estado-vacio {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--espacio-7) var(--espacio-4);
+  border: 2px dashed var(--azul-niebla);
+  border-radius: var(--radio-lg);
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.estado-vacio__estrella {
+  display: inline-block;
+  font-size: 2.4rem;
+  color: var(--naranja-mock);
+  margin-bottom: var(--espacio-2);
+  animation: girar-estrella 6s ease-in-out infinite alternate;
+}
+
+@keyframes girar-estrella {
+  from { transform: rotate(-12deg); }
+  to   { transform: rotate(12deg) scale(1.08); }
+}
+
+.estado-vacio h3 {
+  font-family: var(--fuente-editorial);
+  font-size: 1.6rem;
+  margin-bottom: var(--espacio-2);
+}
+
+.estado-vacio p {
+  color: var(--tinta-suave);
+  margin-bottom: var(--espacio-4);
+  margin-inline: auto;
+}

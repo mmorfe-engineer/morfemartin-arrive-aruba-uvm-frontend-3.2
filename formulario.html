@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Formulario de reserva de Arrive Aruba: valida tus datos y guarda la reserva en la base de datos del navegador. e-actividad 3.1.">
+  <title>Reserva una prenda · Arrive Aruba</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23386395'%20d='M12%201l2.5%207.5H22l-6%204.6%202.3%207.4L12%2016l-6.3%204.5L8%2013.1%202%208.5h7.5z'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+  <!--
+    PÁGINA DE RESERVA — formulario con validación en el navegador.
+    Al enviar, js/formulario.js valida cada campo y guarda la
+    reserva en la base de datos (js/bd.js · localStorage).
+    (realizado por Martin Morfe Flores.°.)
+  -->
+  <a class="enlace-saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__barra">
+      <a class="marca" href="index.html" aria-label="Arrive Aruba — inicio">
+        <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+        </svg>
+        <span class="marca__nombre">Arrive Aruba</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="navegacion__lista">
+          <li><a class="navegacion__enlace" href="index.html">Inicio</a></li>
+          <li><a class="navegacion__enlace" href="catalogo.html">Catálogo</a></li>
+          <li><a class="navegacion__enlace" href="formulario.html" aria-current="page">Reserva</a></li>
+          <li><a class="navegacion__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="navegacion__enlace" href="historial.html">Mis pedidos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="seccion" aria-labelledby="titulo-formulario">
+      <div class="contenedor">
+        <div class="cabecera-seccion">
+          <p class="ceja">Formulario de reserva</p>
+          <h1 id="titulo-formulario">Reserva tu prenda</h1>
+          <p class="introduccion">
+            Completa los datos y tu reserva queda guardada en la base de
+            datos del navegador. Nada viaja a ningún servidor.
+          </p>
+        </div>
+
+        <div class="reserva__rejilla">
+
+          <!-- ==================== FORMULARIO ==================== -->
+          <form id="formulario-reserva" class="reserva__tarjeta" novalidate>
+            <!-- novalidate: la validación se hace a mano en js/formulario.js
+                 para controlar los mensajes en español de la marca -->
+
+            <!-- Nombre completo -->
+            <div class="campo" id="campo-nombre-envoltura">
+              <label class="campo__etiqueta" for="campo-nombre">
+                Nombre completo <span class="campo__obligatorio">*</span>
+              </label>
+              <input class="campo__entrada" type="text" id="campo-nombre" name="nombre"
+                     autocomplete="name" placeholder="Ej.: María García" required>
+              <p class="campo__error">Escribe tu nombre y apellido.</p>
+            </div>
+
+            <!-- Correo -->
+            <div class="campo" id="campo-email-envoltura">
+              <label class="campo__etiqueta" for="campo-email">
+                Correo electrónico <span class="campo__obligatorio">*</span>
+              </label>
+              <input class="campo__entrada" type="email" id="campo-email" name="email"
+                     autocomplete="email" placeholder="nombre@correo.com" required>
+              <p class="campo__error">El correo no parece válido (ej.: nombre@correo.com).</p>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="campo" id="campo-telefono-envoltura">
+              <label class="campo__etiqueta" for="campo-telefono">
+                Teléfono <span class="campo__obligatorio">*</span>
+              </label>
+              <input class="campo__entrada" type="tel" id="campo-telefono" name="telefono"
+                     autocomplete="tel" placeholder="+58 412 1234567" required>
+              <p class="campo__error">El teléfono necesita al menos 7 dígitos.</p>
+            </div>
+
+            <!-- Prenda -->
+            <div class="campo" id="campo-prenda-envoltura">
+              <label class="campo__etiqueta" for="campo-prenda">
+                Prenda a reservar <span class="campo__obligatorio">*</span>
+              </label>
+              <select class="campo__selector" id="campo-prenda" name="prenda" required>
+                <option value="" selected disabled>Elige una prenda…</option>
+                <option>Camisa Sunset Wharf</option>
+                <option>Polo Sapphire Bay</option>
+                <option>Vestido Cannoli Breeze</option>
+                <option>Short Cocobay</option>
+                <option>Sombrero Divi-Divi</option>
+                <option>Pañolón Malmok</option>
+                <option>Sandalias Malmok</option>
+                <option>Alpargatas Hadicurari</option>
+              </select>
+              <p class="campo__error">Elige una prenda del catálogo.</p>
+            </div>
+
+            <!-- Talla -->
+            <fieldset class="campo" id="campo-talla-envoltura">
+              <legend class="campo__etiqueta">
+                Talla <span class="campo__obligatorio">*</span>
+              </legend>
+              <div class="opciones">
+                <span class="opciones__opcion">
+                  <input class="opciones__entrada" type="radio" name="talla" value="XS" id="talla-xs">
+                  <label class="opciones__pastilla" for="talla-xs">XS</label>
+                </span>
+                <span class="opciones__opcion">
+                  <input class="opciones__entrada" type="radio" name="talla" value="S" id="talla-s">
+                  <label class="opciones__pastilla" for="talla-s">S</label>
+                </span>
+                <span class="opciones__opcion">
+                  <input class="opciones__entrada" type="radio" name="talla" value="M" id="talla-m">
+                  <label class="opciones__pastilla" for="talla-m">M</label>
+                </span>
+                <span class="opciones__opcion">
+                  <input class="opciones__entrada" type="radio" name="talla" value="L" id="talla-l">
+                  <label class="opciones__pastilla" for="talla-l">L</label>
+                </span>
+                <span class="opciones__opcion">
+                  <input class="opciones__entrada" type="radio" name="talla" value="XL" id="talla-xl">
+                  <label class="opciones__pastilla" for="talla-xl">XL</label>
+                </span>
+              </div>
+              <p class="campo__error">Marca tu talla.</p>
+            </fieldset>
+
+            <!-- Cantidad -->
+            <div class="campo" id="campo-cantidad-envoltura">
+              <label class="campo__etiqueta" for="campo-cantidad">
+                Cantidad <span class="campo__obligatorio">*</span>
+              </label>
+              <input class="campo__entrada campo__entrada--corta" type="number" id="campo-cantidad"
+                     name="cantidad" min="1" max="10" step="1" value="1" required>
+              <span class="campo__ayuda">Entre 1 y 10 unidades por reserva.</span>
+              <p class="campo__error">La cantidad debe estar entre 1 y 10.</p>
+            </div>
+
+            <!-- Notas -->
+            <div class="campo" id="campo-notas-envoltura">
+              <label class="campo__etiqueta" for="campo-notas">Notas (opcional)</label>
+              <textarea class="campo__area" id="campo-notas" name="notas"
+                        placeholder="Ej.: recoger en el muelle a las 5 p. m."></textarea>
+            </div>
+
+            <!-- Mensaje de éxito (oculto hasta guardar la reserva) -->
+            <div id="mensaje-exito" class="mensaje mensaje--exito" hidden role="status">
+              <p><strong>Reserva guardada en la base de datos.</strong> ✦</p>
+              <p>Puedes verla —y eliminarla si cambia el plan— en
+                <a href="historial.html">Mis pedidos</a>.</p>
+            </div>
+
+            <button class="boton boton--primario reserva__enviar" type="submit">
+              Guardar reserva
+            </button>
+          </form>
+
+          <!-- ==================== PANEL EXPLICATIVO ==================== -->
+          <aside class="reserva__panel" aria-labelledby="titulo-panel-reserva">
+            <h2 id="titulo-panel-reserva">Cómo funciona tu reserva</h2>
+            <ol class="reserva__pasos">
+              <li>
+                <strong>Validamos aquí mismo.</strong>
+                Cada campo se revisa en tu navegador: nada se envía si algo
+                falta o está mal escrito.
+              </li>
+              <li>
+                <strong>Se guarda en la base de datos.</strong>
+                La reserva se guarda con la Web Storage API (localStorage)
+                y sobrevive recargas y cierres del navegador.
+              </li>
+              <li>
+                <strong>La gestionas tú.</strong>
+                En <a href="historial.html">Mis pedidos</a> ves cada reserva
+                con su fecha y puedes eliminarla cuando quieras.
+              </li>
+            </ol>
+            <p class="reserva__privacidad">
+              ✦ Sin servidores, sin cuentas: los datos viven únicamente en
+              este navegador.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div class="pie__marca">
+          <a class="marca" href="index.html">
+            <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+            </svg>
+            <span class="marca__nombre">Arrive Aruba</span>
+          </a>
+          <p class="pie__texto">
+            Ropa resort nacida en Aruba. Adaptación académica de la identidad
+            de la marca para la e-actividad 3.1 de Frontend.
+          </p>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Explorar</h2>
+          <ul class="pie__lista">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="producto.html">Producto destacado</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Atención al pasajero</h2>
+          <ul class="pie__lista">
+            <li><a href="formulario.html">Reservar una prenda</a></li>
+            <li><a href="historial.html">Mis pedidos</a></li>
+            <li>hola@arrivearuba.isla</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pie__legal">
+        <span>© 2026 Arrive Aruba · e-actividad 3.1 · Frontend · Universidad Valle del Momboy</span>
+        <span>Hecho con HTML y CSS, sin plantillas.</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Módulos: base de datos + validación del formulario -->
+  <script src="js/bd.js"></script>
+  <script src="js/formulario.js"></script>
+</body>
+</html>

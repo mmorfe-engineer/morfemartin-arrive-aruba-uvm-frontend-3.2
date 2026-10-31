@@ -1,0 +1,87 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.1
+   ------------------------------------------------------------
+   css/catalogo.css · Estilos del catálogo: filtros por
+   categoría funcionando solo con CSS (:checked) y nota.
+   (realizado por Martin Morfe Flores.°.)
+   ============================================================ */
+
+/* ============================================================
+   1 · FILTRO SIN JAVASCRIPT
+   Los radios viven ocultos antes de los chips. Al marcarse,
+   el selector :checked + hermano general (~) ilumina su chip
+   y oculta las tarjetas de las demás categorías.
+   ============================================================ */
+
+/* Radios invisibles pero enfocables (accesibilidad por teclado) */
+.filtro {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* — Chip activo: el radio marcado alcanza su etiqueta — */
+#filtro-todo:checked ~ .chips label[for="filtro-todo"],
+#filtro-camiseria:checked ~ .chips label[for="filtro-camiseria"],
+#filtro-playa:checked ~ .chips label[for="filtro-playa"],
+#filtro-accesorios:checked ~ .chips label[for="filtro-accesorios"],
+#filtro-calzado:checked ~ .chips label[for="filtro-calzado"] {
+  background: var(--azul-zafiro);
+  border-color: var(--azul-zafiro);
+  color: var(--blanco-superficie);
+  box-shadow: var(--sombra-sm);
+}
+
+/* — Foco visible: el radio enfocado ilumina su etiqueta — */
+#filtro-todo:focus-visible ~ .chips label[for="filtro-todo"],
+#filtro-camiseria:focus-visible ~ .chips label[for="filtro-camiseria"],
+#filtro-playa:focus-visible ~ .chips label[for="filtro-playa"],
+#filtro-accesorios:focus-visible ~ .chips label[for="filtro-accesorios"],
+#filtro-calzado:focus-visible ~ .chips label[for="filtro-calzado"] {
+  outline: 3px solid var(--azul-lago);
+  outline-offset: 2px;
+}
+
+/* — El filtrado: cada radio oculta lo que no es de su categoría —
+   La rejilla del catálogo rellena el hueco al ocultar tarjetas
+   porque las columnas son automáticas en Grid. */
+#filtro-camiseria:checked  ~ .catalogo__rejilla .tarjeta:not([data-categoria="camiseria"]),
+#filtro-playa:checked      ~ .catalogo__rejilla .tarjeta:not([data-categoria="playa"]),
+#filtro-accesorios:checked ~ .catalogo__rejilla .tarjeta:not([data-categoria="accesorios"]),
+#filtro-calzado:checked    ~ .catalogo__rejilla .tarjeta:not([data-categoria="calzado"]) {
+  display: none;
+}
+
+/* Aparición suave de la rejilla al cambiar de filtro */
+.catalogo__rejilla {
+  transition: opacity var(--duracion-media) var(--curva-suave);
+}
+
+/* ============================================================
+   2 · REJILLA Y NOTA
+   ============================================================ */
+.catalogo__rejilla {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Nota técnica bajo la rejilla */
+.catalogo__nota {
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: var(--borde-fino);
+  border-left: 4px solid var(--azul-lago);
+  border-radius: var(--radio-md);
+  background: var(--color-superficie);
+  color: var(--tinta-suave);
+  font-size: 0.92rem;
+  max-width: none;
+}
+
+.catalogo__nota code {
+  font-family: var(--fuente-texto);
+  font-weight: 600;
+  color: var(--azul-zafiro-profundo);
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de la temporada Arrive Aruba: ocho prendas resort con filtros por categoría. e-actividad 3.1.">
+  <title>Catálogo · Arrive Aruba</title>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20fill='%23386395'%20d='M12%201l2.5%207.5H22l-6%204.6%202.3%207.4L12%2016l-6.3%204.5L8%2013.1%202%208.5h7.5z'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Geologica:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/catalogo.css">
+</head>
+<body>
+  <!--
+    PÁGINA DE CATÁLOGO — ocho prendas con filtros por categoría.
+    El filtrado funciona sin JavaScript: los radios ocultos +
+    el selector :checked controlan qué tarjetas se muestran.
+    (realizado por Martin Morfe Flores.°.)
+  -->
+  <a class="enlace-saltar" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__barra">
+      <a class="marca" href="index.html" aria-label="Arrive Aruba — inicio">
+        <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+        </svg>
+        <span class="marca__nombre">Arrive Aruba</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="navegacion__lista">
+          <li><a class="navegacion__enlace" href="index.html">Inicio</a></li>
+          <li><a class="navegacion__enlace" href="catalogo.html" aria-current="page">Catálogo</a></li>
+          <li><a class="navegacion__enlace" href="formulario.html">Reserva</a></li>
+          <li><a class="navegacion__enlace" href="nosotros.html">Nosotros</a></li>
+          <li><a class="navegacion__enlace" href="historial.html">Mis pedidos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="seccion" aria-labelledby="titulo-catalogo">
+      <div class="contenedor">
+        <div class="cabecera-seccion">
+          <p class="ceja">Todo para el viaje</p>
+          <h1 id="titulo-catalogo">Catálogo de la temporada</h1>
+          <p class="introduccion">
+            Ocho piezas, cuatro categorías. Filtra con los chips — el filtro
+            funciona solo con CSS — y reserva la tuya desde la ficha.
+          </p>
+        </div>
+
+        <!-- ==================== FILTROS ==================== -->
+        <!--
+          Radios de estado ocultos: al marcarse, el CSS (css/catalogo.css)
+          ilumina el chip elegido y oculta las tarjetas de otras categorías.
+          Sin una sola línea de JavaScript.
+        -->
+        <section class="catalogo__filtros" aria-label="Filtros del catálogo">
+          <input class="filtro" type="radio" name="filtro" id="filtro-todo" checked>
+          <input class="filtro" type="radio" name="filtro" id="filtro-camiseria">
+          <input class="filtro" type="radio" name="filtro" id="filtro-playa">
+          <input class="filtro" type="radio" name="filtro" id="filtro-accesorios">
+          <input class="filtro" type="radio" name="filtro" id="filtro-calzado">
+
+          <div class="chips" role="group" aria-label="Filtrar por categoría">
+            <label class="chip" for="filtro-todo">Todo</label>
+            <label class="chip" for="filtro-camiseria">Camisería</label>
+            <label class="chip" for="filtro-playa">Playa</label>
+            <label class="chip" for="filtro-accesorios">Accesorios</label>
+            <label class="chip" for="filtro-calzado">Calzado</label>
+          </div>
+
+          <!-- ==================== REJILLA DE PRENDAS ==================== -->
+          <div class="rejilla-productos catalogo__rejilla">
+
+            <!-- Camisería · Camisa -->
+            <article class="tarjeta" data-categoria="camiseria">
+              <a class="tarjeta__enlace" href="producto.html" aria-label="Ver detalle de la Camisa Sunset Wharf">
+                <div class="tarjeta__figura tono-zafiro">
+                  <span class="etiqueta etiqueta--zafiro">Detalle</span>
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <path d="M22 5 L32 11 L42 5 L56 11 L49 28 L43 24 V68 H21 V24 L15 28 L8 11 Z" fill="#2c4e78" opacity="0.9"/>
+                    <path d="M22 5 L32 11 L42 5 L37 14 H27 Z" fill="#f0f0e5"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Camisería</p>
+                <h2 class="tarjeta__nombre">Camisa Sunset Wharf</h2>
+                <p class="tarjeta__precio">$ 68,00</p>
+              </div>
+            </article>
+
+            <!-- Camisería · Polo -->
+            <article class="tarjeta" data-categoria="camiseria">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Polo%20Sapphire%20Bay" aria-label="Reservar el Polo Sapphire Bay">
+                <div class="tarjeta__figura tono-crema">
+                  <span class="etiqueta">Nuevo</span>
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <path d="M24 8 L32 13 L40 8 L52 14 L46 27 L42 24 V66 H22 V24 L18 27 L12 14 Z" fill="#386395" opacity="0.85"/>
+                    <path d="M24 8 L32 13 L40 8 L35 16 H29 Z" fill="#f0f0e5"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Camisería</p>
+                <h2 class="tarjeta__nombre">Polo Sapphire Bay</h2>
+                <p class="tarjeta__precio">$ 54,00</p>
+              </div>
+            </article>
+
+            <!-- Playa · Vestido -->
+            <article class="tarjeta" data-categoria="playa">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Vestido%20Cannoli%20Breeze" aria-label="Reservar el Vestido Cannoli Breeze">
+                <div class="tarjeta__figura tono-naranja">
+                  <span class="etiqueta">Temporada</span>
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <path d="M26 4 L32 12 L38 4 L40 22 L52 66 H12 L24 22 Z" fill="#b4552f" opacity="0.8"/>
+                    <path d="M32 12 L44 24 H20 Z" fill="#f0f0e5" opacity="0.9"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Playa</p>
+                <h2 class="tarjeta__nombre">Vestido Cannoli Breeze</h2>
+                <p class="tarjeta__precio">$ 89,00</p>
+              </div>
+            </article>
+
+            <!-- Playa · Short -->
+            <article class="tarjeta" data-categoria="playa">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Short%20Cocobay" aria-label="Reservar el Short Cocobay">
+                <div class="tarjeta__figura tono-lago">
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <path d="M18 12 H46 L50 42 L38 42 L32 28 L26 42 L14 42 Z" fill="#386395" opacity="0.85"/>
+                    <path d="M18 12 H46 L47 18 H17 Z" fill="#f0f0e5"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Playa</p>
+                <h2 class="tarjeta__nombre">Short Cocobay</h2>
+                <p class="tarjeta__precio">$ 42,00</p>
+              </div>
+            </article>
+
+            <!-- Accesorios · Sombrero -->
+            <article class="tarjeta" data-categoria="accesorios">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Sombrero%20Divi-Divi" aria-label="Reservar el Sombrero Divi-Divi">
+                <div class="tarjeta__figura tono-verde">
+                  <span class="etiqueta etiqueta--zafiro">Isla</span>
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <ellipse cx="32" cy="52" rx="26" ry="8" fill="#2c4e78"/>
+                    <path d="M20 52 Q22 18 32 18 Q42 18 44 52 Z" fill="#386395"/>
+                    <path d="M20 52 Q32 46 44 52" stroke="#f0f0e5" stroke-width="4" fill="none"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Accesorios</p>
+                <h2 class="tarjeta__nombre">Sombrero Divi-Divi</h2>
+                <p class="tarjeta__precio">$ 36,00</p>
+              </div>
+            </article>
+
+            <!-- Accesorios · Pañolón -->
+            <article class="tarjeta" data-categoria="accesorios">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Pa%C3%B1ol%C3%B3n%20Malmok" aria-label="Reservar el Pañolón Malmok">
+                <div class="tarjeta__figura tono-crema">
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <path d="M20 10 C40 6 52 20 46 36 C42 48 26 50 20 42 C28 46 38 40 40 30 C42 18 30 14 20 18 Z" fill="#386395" opacity="0.85"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Accesorios</p>
+                <h2 class="tarjeta__nombre">Pañolón Malmok</h2>
+                <p class="tarjeta__precio">$ 29,00</p>
+              </div>
+            </article>
+
+            <!-- Calzado · Sandalias -->
+            <article class="tarjeta" data-categoria="calzado">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Sandalias%20Malmok" aria-label="Reservar las Sandalias Malmok">
+                <div class="tarjeta__figura tono-zafiro">
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <ellipse cx="32" cy="48" rx="20" ry="10" fill="#2c4e78"/>
+                    <path d="M16 46 Q32 26 48 46" stroke="#f0f0e5" stroke-width="5" fill="none"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Calzado</p>
+                <h2 class="tarjeta__nombre">Sandalias Malmok</h2>
+                <p class="tarjeta__precio">$ 49,00</p>
+              </div>
+            </article>
+
+            <!-- Calzado · Alpargatas -->
+            <article class="tarjeta" data-categoria="calzado">
+              <a class="tarjeta__enlace" href="formulario.html?prenda=Alpargatas%20Hadicurari" aria-label="Reservar las Alpargatas Hadicurari">
+                <div class="tarjeta__figura tono-naranja">
+                  <svg viewBox="0 0 64 72" aria-hidden="true">
+                    <ellipse cx="32" cy="48" rx="20" ry="10" fill="#b4552f" opacity="0.85"/>
+                    <path d="M14 50 Q32 58 50 50" stroke="#f0f0e5" stroke-width="4" fill="none"/>
+                  </svg>
+                </div>
+              </a>
+              <div class="tarjeta__cuerpo">
+                <p class="tarjeta__categoria">Calzado</p>
+                <h2 class="tarjeta__nombre">Alpargatas Hadicurari</h2>
+                <p class="tarjeta__precio">$ 45,00</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Nota de la técnica usada en el filtro -->
+        <p class="catalogo__nota">
+          ✦ El filtro del catálogo no usa JavaScript: los radios de estado
+          y el selector <code>:checked</code> hacen todo el trabajo en CSS.
+        </p>
+      </div>
+    </section>
+
+    <!-- LLAMADO A RESERVAR -->
+    <section class="llamado" aria-labelledby="titulo-llamado-catalogo">
+      <div class="contenedor llamado__caja">
+        <div>
+          <p class="ceja llamado__ceja">¿Ya elegiste?</p>
+          <h2 id="titulo-llamado-catalogo">Tu reserva queda guardada en la base de datos del navegador.</h2>
+        </div>
+        <a class="boton boton--claro" href="formulario.html">Ir al formulario de reserva</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__rejilla">
+        <div class="pie__marca">
+          <a class="marca" href="index.html">
+            <svg class="marca__estrella" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 1l2.5 7.5H22l-6 4.6 2.3 7.4L12 16l-6.3 4.5L8 13.1 2 8.5h7.5z"/>
+            </svg>
+            <span class="marca__nombre">Arrive Aruba</span>
+          </a>
+          <p class="pie__texto">
+            Ropa resort nacida en Aruba. Adaptación académica de la identidad
+            de la marca para la e-actividad 3.1 de Frontend.
+          </p>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Explorar</h2>
+          <ul class="pie__lista">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="producto.html">Producto destacado</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="pie__titulo">Atención al pasajero</h2>
+          <ul class="pie__lista">
+            <li><a href="formulario.html">Reservar una prenda</a></li>
+            <li><a href="historial.html">Mis pedidos</a></li>
+            <li>hola@arrivearuba.isla</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pie__legal">
+        <span>© 2026 Arrive Aruba · e-actividad 3.1 · Frontend · Universidad Valle del Momboy</span>
+        <span>Hecho con HTML y CSS, sin plantillas.</span>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
