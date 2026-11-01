@@ -1,0 +1,245 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.2
+   ------------------------------------------------------------
+   css/responsive.css · Diseño responsive y menú desplegable.
+   Adaptación mobile-first con media queries y tipografía
+   fluida; navegación de hamburguesa con CSS puro (:checked),
+   sin una línea de JavaScript.
+   (realizado por Martin Alejandro Morfe Carballo y
+    Martin Morfe Flores.°.)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   0 · SEGURIDAD FLUIDA
+   Las imágenes nunca desbordan su caja, pase lo que pase.
+   ------------------------------------------------------------ */
+img {
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------
+   1 · MENÚ DESPLEGABLE (hamburguesa con CSS puro)
+   Un checkbox oculto actúa de interruptor; su label es la
+   palanca con las tres barras. Al marcarse, el panel de
+   navegación se despliega bajo la cabecera; las barras se
+   cruzan formando una X. En escritorio la palanca desaparece
+   y la lista vuelve a ser horizontal.
+   ------------------------------------------------------------ */
+
+/* Interruptor: invisible pero enfocable con el teclado */
+.menu__interruptor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Palanca: la zona táctil cumple el mínimo de 44 px */
+.menu__palanca {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: var(--borde-fino);
+  border-radius: var(--radio-md);
+  cursor: pointer;
+  transition:
+    background var(--duracion-rapida) var(--curva-suave),
+    transform var(--duracion-rapida) var(--curva-suave);
+}
+
+.menu__palanca:hover {
+  background: rgba(56, 99, 149, 0.08);
+}
+
+.menu__interruptor:focus-visible ~ .menu__palanca {
+  outline: 2px solid var(--azul-zafiro);
+  outline-offset: 2px;
+}
+
+/* Las tres barras de la hamburguesa */
+.menu__icono,
+.menu__icono::before,
+.menu__icono::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--tinta-suave);
+  transition:
+    transform var(--duracion-rapida) var(--curva-suave),
+    background var(--duracion-rapida) var(--curva-suave);
+}
+
+.menu__icono { position: relative; }
+
+.menu__icono::before,
+.menu__icono::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu__icono::before { top: -6px; }
+.menu__icono::after  { top:  6px; }
+
+/* Interruptor marcado: las barras se cruzan en una X */
+.menu__interruptor:checked ~ .menu__palanca .menu__icono { background: transparent; }
+.menu__interruptor:checked ~ .menu__palanca .menu__icono::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.menu__interruptor:checked ~ .menu__palanca .menu__icono::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Panel de navegación: solo existe como desplegable en móvil */
+@media (max-width: 899px) {
+  .navegacion__lista {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding: var(--espacio-2) var(--espacio-4) var(--espacio-3);
+    background: rgba(240, 240, 229, 0.96);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: var(--borde-fino);
+    box-shadow: var(--sombra-md);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      visibility var(--duracion-rapida) var(--curva-suave),
+      opacity var(--duracion-rapida) var(--curva-suave),
+      transform var(--duracion-rapida) var(--curva-suave);
+  }
+
+  .menu__interruptor:checked ~ nav .navegacion__lista {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Enlaces del panel: filas generosas para el dedo */
+  .navegacion__enlace {
+    display: block;
+    padding: var(--espacio-2) var(--espacio-1);
+    font-size: 1.05rem;
+  }
+}
+
+/* En escritorio no hay palanca ni panel: lista horizontal */
+@media (min-width: 900px) {
+  .menu__palanca { display: none; }
+}
+
+/* ------------------------------------------------------------
+   2 · TABLETA (≤ 1024 px)
+   La rejilla de productos respira: 4 → 3 columnas y el hero
+   apila su texto sobre la ventana del avión.
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  .rejilla-productos { grid-template-columns: repeat(3, 1fr); }
+  .hero__rejilla { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------
+   3 · TABLETA PEQUEÑA Y CELULAR GRANDE (≤ 900 px)
+   Todas las composiciones de dos columnas se apilan en una;
+   las rejillas pasan a dos columnas equilibradas.
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .rejilla-productos       { grid-template-columns: repeat(2, 1fr); }
+  .rejilla-productos--tres { grid-template-columns: repeat(2, 1fr); }
+  .rejilla-categorias      { grid-template-columns: repeat(2, 1fr); }
+  .rejilla-testimonios     { grid-template-columns: 1fr; }
+  .pasos                   { grid-template-columns: repeat(2, 1fr); }
+  .valores                 { grid-template-columns: repeat(2, 1fr); }
+  .proceso                 { grid-template-columns: repeat(2, 1fr); }
+  .historial__rejilla      { grid-template-columns: 1fr; }
+
+  .hero__rejilla,
+  .historia,
+  .reserva__rejilla,
+  .producto__rejilla { grid-template-columns: 1fr; }
+
+  /* El visor deja de flotar cuando va debajo de la ficha */
+  .producto__panel {
+    position: static;
+    aspect-ratio: 4 / 3;
+  }
+
+  .pie__rejilla { grid-template-columns: 1fr 1fr; }
+
+  /* La ventana del hero baja de tamaño con su paisaje */
+  .ventana {
+    width: min(60vw, 320px);
+    margin-inline: auto;
+  }
+}
+
+/* ------------------------------------------------------------
+   4 · CELULAR (≤ 640 px)
+   Una sola columna para todo; tipografía y bandas se adaptan
+   con unidades relativas para que ningún texto desborde.
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .contenedor { width: min(100% - 1.5rem, 1160px); }
+
+  .rejilla-productos,
+  .rejilla-productos--tres,
+  .rejilla-categorias,
+  .pasos,
+  .valores,
+  .proceso,
+  .pie__rejilla { grid-template-columns: 1fr; }
+
+  /* La banda de atmósfera pesa menos en pantallas cortas */
+  .pelicula { min-height: 42vh; }
+
+  /* El visor del editorial vuelve a su proporción de retrato */
+  .producto__panel { aspect-ratio: 4 / 5; }
+  .producto__pulgar label { width: 46px; }
+
+  /* La ventana del hero ocupa más protagonismo en la columna única */
+  .ventana { width: min(70vw, 300px); }
+
+  /* Los pasos del proceso respiran en vertical */
+  .paso,
+  .valor,
+  .proceso__paso {
+    text-align: left;
+  }
+}
+
+/* ------------------------------------------------------------
+   5 · CELULAR PEQUEÑO (≤ 400 px)
+   Botones y llamados a pantalla completa: nada queda fuera
+   del alcance del pulgar.
+   ------------------------------------------------------------ */
+@media (max-width: 400px) {
+  .llamado__caja .boton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ------------------------------------------------------------
+   6 · MOVIMIENTO REDUCIDO
+   Con prefers-reduced-motion el menú aparece sin transición
+   y la fotografía de atmósfera queda fija.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .navegacion__lista,
+  .menu__icono,
+  .menu__icono::before,
+  .menu__icono::after {
+    transition: none;
+  }
+}

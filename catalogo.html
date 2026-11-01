@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/componentes.css">
   <link rel="stylesheet" href="css/catalogo.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <!--
@@ -33,6 +34,13 @@
         </svg>
         <span class="marca__nombre">Arrive Aruba</span>
       </a>
+
+      <!-- Menú desplegable (e-actividad 3.2): interruptor CSS puro -->
+      <input type="checkbox" id="menu-principal" class="menu__interruptor" />
+      <label for="menu-principal" class="menu__palanca" aria-label="Abrir o cerrar el menú">
+        <span class="menu__icono" aria-hidden="true"></span>
+      </label>
+
       <nav aria-label="Navegación principal">
         <ul class="navegacion__lista">
           <li><a class="navegacion__enlace" href="index.html">Inicio</a></li>
