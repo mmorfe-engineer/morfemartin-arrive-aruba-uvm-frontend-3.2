@@ -1,0 +1,639 @@
+{
+  "version": 3,
+  "generator": "tools/build_journey_organic_assets.py",
+  "source": {
+    "width": 1200,
+    "height": 1600,
+    "frameCount": 144,
+    "crop": [
+      214,
+      270,
+      986,
+      1332
+    ]
+  },
+  "frames": {
+    "shadeOpen": 72,
+    "whiteoutStart": 84,
+    "final": 144
+  },
+  "timeline": {
+    "shadeStart": 0.02,
+    "shadeEnd": 0.94,
+    "zoomStart": 0.5,
+    "finalSwap": 0.9,
+    "zoomEnd": 0.98
+  },
+  "aperture": {
+    "x": 0.122,
+    "y": 0.12,
+    "width": 0.756,
+    "height": 0.763
+  },
+  "variants": {
+    "desktop": {
+      "budgetBytes": 9437184,
+      "totalBytes": 8677456,
+      "maxSheetSize": 2048,
+      "slidingWindow": 2,
+      "cell": {
+        "width": 727,
+        "height": 1000
+      },
+      "poster": {
+        "src": "desktop/poster.webp",
+        "width": 727,
+        "height": 1000
+      },
+      "staticStill": {
+        "src": "desktop/static.webp",
+        "width": 727,
+        "height": 1000
+      },
+      "finalStill": {
+        "src": "desktop/final.webp",
+        "width": 772,
+        "height": 1062
+      },
+      "clip": {
+        "frameStart": 1,
+        "frameEnd": 144,
+        "frameCount": 144,
+        "sheets": [
+          {
+            "src": "desktop/shade-00.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 0,
+            "frameCount": 4,
+            "bytes": 138046
+          },
+          {
+            "src": "desktop/shade-01.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 4,
+            "frameCount": 4,
+            "bytes": 138266
+          },
+          {
+            "src": "desktop/shade-02.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 8,
+            "frameCount": 4,
+            "bytes": 144384
+          },
+          {
+            "src": "desktop/shade-03.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 12,
+            "frameCount": 4,
+            "bytes": 158032
+          },
+          {
+            "src": "desktop/shade-04.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 16,
+            "frameCount": 4,
+            "bytes": 176628
+          },
+          {
+            "src": "desktop/shade-05.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 20,
+            "frameCount": 4,
+            "bytes": 199822
+          },
+          {
+            "src": "desktop/shade-06.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 24,
+            "frameCount": 4,
+            "bytes": 224802
+          },
+          {
+            "src": "desktop/shade-07.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 28,
+            "frameCount": 4,
+            "bytes": 248516
+          },
+          {
+            "src": "desktop/shade-08.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 32,
+            "frameCount": 4,
+            "bytes": 267276
+          },
+          {
+            "src": "desktop/shade-09.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 36,
+            "frameCount": 4,
+            "bytes": 287492
+          },
+          {
+            "src": "desktop/shade-10.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 40,
+            "frameCount": 4,
+            "bytes": 295682
+          },
+          {
+            "src": "desktop/shade-11.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 44,
+            "frameCount": 4,
+            "bytes": 298416
+          },
+          {
+            "src": "desktop/shade-12.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 48,
+            "frameCount": 4,
+            "bytes": 300204
+          },
+          {
+            "src": "desktop/shade-13.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 52,
+            "frameCount": 4,
+            "bytes": 300560
+          },
+          {
+            "src": "desktop/shade-14.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 56,
+            "frameCount": 4,
+            "bytes": 306448
+          },
+          {
+            "src": "desktop/shade-15.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 60,
+            "frameCount": 4,
+            "bytes": 308244
+          },
+          {
+            "src": "desktop/shade-16.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 64,
+            "frameCount": 4,
+            "bytes": 306290
+          },
+          {
+            "src": "desktop/shade-17.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 68,
+            "frameCount": 4,
+            "bytes": 307204
+          },
+          {
+            "src": "desktop/shade-18.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 72,
+            "frameCount": 4,
+            "bytes": 305652
+          },
+          {
+            "src": "desktop/shade-19.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 76,
+            "frameCount": 4,
+            "bytes": 312968
+          },
+          {
+            "src": "desktop/shade-20.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 80,
+            "frameCount": 4,
+            "bytes": 299242
+          },
+          {
+            "src": "desktop/shade-21.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 84,
+            "frameCount": 4,
+            "bytes": 267350
+          },
+          {
+            "src": "desktop/shade-22.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 88,
+            "frameCount": 4,
+            "bytes": 258060
+          },
+          {
+            "src": "desktop/shade-23.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 92,
+            "frameCount": 4,
+            "bytes": 249652
+          },
+          {
+            "src": "desktop/shade-24.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 96,
+            "frameCount": 4,
+            "bytes": 242988
+          },
+          {
+            "src": "desktop/shade-25.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 100,
+            "frameCount": 4,
+            "bytes": 236336
+          },
+          {
+            "src": "desktop/shade-26.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 104,
+            "frameCount": 4,
+            "bytes": 231512
+          },
+          {
+            "src": "desktop/shade-27.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 108,
+            "frameCount": 4,
+            "bytes": 226960
+          },
+          {
+            "src": "desktop/shade-28.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 112,
+            "frameCount": 4,
+            "bytes": 217816
+          },
+          {
+            "src": "desktop/shade-29.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 116,
+            "frameCount": 4,
+            "bytes": 198772
+          },
+          {
+            "src": "desktop/shade-30.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 120,
+            "frameCount": 4,
+            "bytes": 182406
+          },
+          {
+            "src": "desktop/shade-31.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 124,
+            "frameCount": 4,
+            "bytes": 170092
+          },
+          {
+            "src": "desktop/shade-32.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 128,
+            "frameCount": 4,
+            "bytes": 170476
+          },
+          {
+            "src": "desktop/shade-33.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 132,
+            "frameCount": 4,
+            "bytes": 167876
+          },
+          {
+            "src": "desktop/shade-34.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 136,
+            "frameCount": 4,
+            "bytes": 162022
+          },
+          {
+            "src": "desktop/shade-35.webp",
+            "width": 1454,
+            "height": 2000,
+            "columns": 2,
+            "rows": 2,
+            "frameOffset": 140,
+            "frameCount": 4,
+            "bytes": 165332
+          }
+        ]
+      }
+    },
+    "mobile": {
+      "budgetBytes": 4718592,
+      "totalBytes": 4090376,
+      "maxSheetSize": 2048,
+      "slidingWindow": 2,
+      "cell": {
+        "width": 509,
+        "height": 700
+      },
+      "poster": {
+        "src": "mobile/poster.webp",
+        "width": 509,
+        "height": 700
+      },
+      "staticStill": {
+        "src": "mobile/static.webp",
+        "width": 509,
+        "height": 700
+      },
+      "finalStill": {
+        "src": "mobile/final.webp",
+        "width": 772,
+        "height": 1062
+      },
+      "clip": {
+        "frameStart": 1,
+        "frameEnd": 144,
+        "frameCount": 144,
+        "sheets": [
+          {
+            "src": "mobile/shade-00.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 0,
+            "frameCount": 8,
+            "bytes": 150832
+          },
+          {
+            "src": "mobile/shade-01.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 8,
+            "frameCount": 8,
+            "bytes": 163940
+          },
+          {
+            "src": "mobile/shade-02.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 16,
+            "frameCount": 8,
+            "bytes": 182888
+          },
+          {
+            "src": "mobile/shade-03.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 24,
+            "frameCount": 8,
+            "bytes": 214778
+          },
+          {
+            "src": "mobile/shade-04.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 32,
+            "frameCount": 8,
+            "bytes": 250986
+          },
+          {
+            "src": "mobile/shade-05.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 40,
+            "frameCount": 8,
+            "bytes": 266574
+          },
+          {
+            "src": "mobile/shade-06.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 48,
+            "frameCount": 8,
+            "bytes": 272724
+          },
+          {
+            "src": "mobile/shade-07.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 56,
+            "frameCount": 8,
+            "bytes": 268712
+          },
+          {
+            "src": "mobile/shade-08.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 64,
+            "frameCount": 8,
+            "bytes": 275790
+          },
+          {
+            "src": "mobile/shade-09.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 72,
+            "frameCount": 8,
+            "bytes": 272312
+          },
+          {
+            "src": "mobile/shade-10.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 80,
+            "frameCount": 8,
+            "bytes": 245124
+          },
+          {
+            "src": "mobile/shade-11.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 88,
+            "frameCount": 8,
+            "bytes": 219504
+          },
+          {
+            "src": "mobile/shade-12.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 96,
+            "frameCount": 8,
+            "bytes": 212988
+          },
+          {
+            "src": "mobile/shade-13.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 104,
+            "frameCount": 8,
+            "bytes": 208590
+          },
+          {
+            "src": "mobile/shade-14.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 112,
+            "frameCount": 8,
+            "bytes": 201238
+          },
+          {
+            "src": "mobile/shade-15.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 120,
+            "frameCount": 8,
+            "bytes": 187204
+          },
+          {
+            "src": "mobile/shade-16.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 128,
+            "frameCount": 8,
+            "bytes": 179574
+          },
+          {
+            "src": "mobile/shade-17.webp",
+            "width": 2036,
+            "height": 1400,
+            "columns": 4,
+            "rows": 2,
+            "frameOffset": 136,
+            "frameCount": 8,
+            "bytes": 175094
+          }
+        ]
+      }
+    }
+  }
+}
