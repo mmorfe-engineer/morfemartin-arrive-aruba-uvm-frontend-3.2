@@ -219,10 +219,12 @@
 }
 
 /* ============================================================
-   5 · PELÍCULA — la atmósfera de la isla
+   5 · PELÍCULA — la atmósfera de la isla (efecto parallax)
    Banda a sangre con la fotografía del hero de la marca.
-   El movimiento es un Ken Burns dibujado con @keyframes y el
-   velo (mix-blend-mode) garantiza la lectura del lema.
+   e-actividad 3.2: el parallax se logra con CSS puro fijando
+   el fondo (background-attachment: fixed): al hacer scroll la
+   banda se desliza y la fotografía permanece suspendida detrás
+   del velo (mix-blend-mode) que garantiza la lectura del lema.
    ============================================================ */
 .pelicula {
   position: relative;
@@ -231,23 +233,9 @@
   place-items: center;
   overflow: hidden;
   border-bottom: var(--borde-fino);
-  background: var(--azul-zafiro-profundo);
-}
-
-/* La fotografía cubre la banda y se mueve despacio (Ken Burns) */
-.pelicula__foto {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(1.05);
-  animation: ken-burns 26s ease-in-out infinite alternate;
-}
-
-@keyframes ken-burns {
-  from { transform: scale(1) translate(0, 0); }
-  to   { transform: scale(1.12) translate(-1.5%, 1%); }
+  background:
+    url("../assets/img/atmosfera.jpg") center / cover no-repeat fixed
+    var(--azul-zafiro-profundo);
 }
 
 /* Velo: oscurece la fotografía donde el degradado lo pide */
@@ -272,8 +260,49 @@
   animation: aparecer 700ms var(--curva-suave) backwards;
 }
 
-/* Quien prefiere menos movimiento ve la fotografía en reposo */
+/* Quien prefiere menos movimiento ve la fotografía sin parallax */
 @media (prefers-reduced-motion: reduce) {
-  .pelicula__foto { animation: none; }
+  .pelicula { background-attachment: scroll; }
 }
 
+
+/* ============================================================
+   7 · CARRUSEL DE EDITORIALES (scroll-snap, CSS puro)
+   e-actividad 3.2: la banda se desliza en horizontal y cada
+   fotografía encaja al centro gracias a scroll-snap-type.
+   ============================================================ */
+.carrusel {
+  display: flex;
+  gap: var(--espacio-3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-block: var(--espacio-2);
+  padding-inline: max(var(--espacio-4), calc((100vw - 1160px) / 2));
+  scrollbar-width: thin;
+  scrollbar-color: var(--azul-zafiro) var(--crema-cannoli);
+}
+
+.carrusel__slide {
+  flex: 0 0 min(72%, 460px);
+  scroll-snap-align: center;
+  margin: 0;
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.carrusel__slide img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radio-lg);
+  border: var(--borde-fino);
+  box-shadow: var(--sombra-md);
+}
+
+.carrusel__slide figcaption {
+  font-size: 0.85rem;
+  color: var(--tinta-suave);
+  text-align: center;
+  letter-spacing: 0.04em;
+}

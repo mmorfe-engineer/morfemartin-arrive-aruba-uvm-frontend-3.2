@@ -1,0 +1,965 @@
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.2
+   ------------------------------------------------------------
+   css/figma-hero.css · Shell del hero con la pieza Journey
+   Organic: atmósfera de nubes por capas, ventana-canvas y copy.
+   Adaptado del proyecto de marca: tipografías con licencia
+   sustituidas por Cormorant Garamond (equivalente editorial)
+   y rutas actualizadas al directorio assets/ de esta entrega.
+   ============================================================ */
+
+/* Arrive Aruba — Figma Hero Shell + Journey Organic canvas
+   Desktop canonical composition: 1440×900 (Figma 158:236)
+   Mobile canonical composition: 375×812 (Figma 158:263)
+   Motion: Journey Organic spritesheet scrub inside .aa-figma-hero__window.
+   First paint MUST be closed (frame 0 / closed poster).
+*/
+
+
+
+.aa-figma-hero {
+  --aa-cream: #f0f0e5;
+  --aa-cta: #386395;
+  --aa-sky: #5f8bb8;
+  --aa-window-ratio: 468 / 644;
+  --aa-window-max-w: 380px;
+  --aa-comp-h: 900px;
+  position: relative;
+  width: 100%;
+  /* Scroll track overridden by journey-organic.js (data-scroll-length) */
+  height: 500vh;
+  min-height: 500vh;
+  overflow: visible;
+  overflow-x: clip;
+  background: var(--aa-cream);
+  isolation: isolate;
+}
+
+.aa-figma-hero__sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--aa-comp-h);
+  min-height: var(--aa-comp-h);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Tall monitors: sticky fills viewport but never shorter than Figma 900 */
+@media (min-width: 761px) and (min-height: 901px) {
+  .aa-figma-hero__sticky {
+    height: 100svh;
+    min-height: 900px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aa-figma-hero {
+    height: var(--aa-comp-h);
+    min-height: var(--aa-comp-h);
+    overflow: hidden;
+  }
+
+  .aa-figma-hero__sticky {
+    position: relative;
+    height: 100%;
+    min-height: inherit;
+  }
+
+  .aa-cloud-atmosphere__base,
+  .aa-cloud-atmosphere__distant,
+  .aa-cloud-atmosphere__mist,
+  .aa-cloud-atmosphere__warm,
+  .aa-cloud-atmosphere .aa-figma-hero__bg {
+    animation: none !important;
+    filter: none;
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .aa-cloud-atmosphere__distant,
+  .aa-cloud-atmosphere__mist,
+  .aa-cloud-atmosphere__warm {
+    display: none !important;
+  }
+}
+
+/* ─── Background layer ─── */
+.aa-figma-hero__bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* Dissolve plate pixels before seam so no hard photo edge remains */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 70%,
+    rgba(0, 0, 0, 0.92) 82%,
+    rgba(0, 0, 0, 0.45) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 70%,
+    rgba(0, 0, 0, 0.92) 82%,
+    rgba(0, 0, 0, 0.45) 92%,
+    transparent 100%
+  );
+}
+
+/*
+  Living cloud atmosphere — CSS only, outside Journey.
+  Same approved plate only. No video/GIF/JS/scroll coupling.
+  Depth = same plate treated as far (soft/blurred) vs near (clearer),
+  drifting on independent paths — not a whole-frame Ken Burns.
+*/
+.aa-cloud-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aa-cloud-atmosphere__base,
+.aa-cloud-atmosphere__distant,
+.aa-cloud-atmosphere__mist,
+.aa-cloud-atmosphere__warm {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aa-cloud-atmosphere__base {
+  z-index: 0;
+}
+
+.aa-cloud-atmosphere__distant {
+  z-index: 1;
+  /* Far plane: soft / less defined */
+  opacity: 0.34;
+  filter: blur(4.5px) contrast(0.94) saturate(0.88) brightness(1.02);
+}
+
+.aa-cloud-atmosphere__mist {
+  z-index: 2;
+  /* Softer lower air — same plate, bottom emphasis */
+  opacity: 0.28;
+  filter: blur(1.5px) contrast(0.97) saturate(0.92) brightness(1.04);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.2) 66%,
+    rgba(0, 0, 0, 0.65) 82%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 52%,
+    rgba(0, 0, 0, 0.2) 66%,
+    rgba(0, 0, 0, 0.65) 82%,
+    #000 100%
+  );
+}
+
+.aa-cloud-atmosphere__warm {
+  z-index: 3;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+  filter: contrast(1.02) saturate(1.05) brightness(1.04);
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 90% at 90% 40%,
+    #000 0%,
+    rgba(0, 0, 0, 0.65) 38%,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 90% at 90% 40%,
+    #000 0%,
+    rgba(0, 0, 0, 0.65) 38%,
+    transparent 70%
+  );
+}
+
+.aa-cloud-atmosphere .aa-figma-hero__bg {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  will-change: object-position, opacity;
+}
+
+/* Desktop: oversize plate so object-position drift never shows empty edges */
+.aa-cloud-atmosphere .aa-figma-hero__bg--desktop {
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /*
+   * Organic atmospheric flow:
+   * - linear timing (no ease-in-out stop/start at ends)
+   * - multi-waypoint paths (velocity encoded in spacing)
+   * - soft apex passage (no dwell / no hard reverse)
+   * - phase offsets so layers never reverse in sync
+   */
+  .aa-cloud-atmosphere__base .aa-figma-hero__bg {
+    animation: aa-cloud-base-pan 38s linear infinite;
+    animation-delay: -6s;
+  }
+
+  .aa-cloud-atmosphere__distant .aa-figma-hero__bg {
+    animation: aa-cloud-far-pan 54s linear infinite;
+    animation-delay: -19s;
+  }
+
+  .aa-cloud-atmosphere__distant {
+    animation: aa-cloud-far-veil 54s linear infinite;
+    animation-delay: -19s;
+  }
+
+  .aa-cloud-atmosphere__mist .aa-figma-hero__bg {
+    animation: aa-cloud-near-pan 32s linear infinite;
+    animation-delay: -11s;
+  }
+
+  .aa-cloud-atmosphere__mist {
+    animation: aa-cloud-near-veil 32s linear infinite;
+    animation-delay: -11s;
+  }
+
+  .aa-cloud-atmosphere__warm {
+    animation: aa-cloud-warm-breathe 44s linear infinite;
+    animation-delay: -23s;
+  }
+
+  .aa-cloud-atmosphere__warm .aa-figma-hero__bg {
+    animation: aa-cloud-warm-pan 44s linear infinite;
+    animation-delay: -23s;
+  }
+}
+
+/* Continuous object-position drift — same amplitude envelope, soft turnaround */
+@keyframes aa-cloud-base-pan {
+  0% {
+    object-position: 50% 46%;
+  }
+  14% {
+    object-position: 47.2% 48.2%;
+  }
+  30% {
+    object-position: 42.4% 51.8%;
+  }
+  44% {
+    object-position: 39.1% 54.6%;
+  }
+  50% {
+    object-position: 38% 56%;
+  }
+  56% {
+    object-position: 39.2% 54.8%;
+  }
+  70% {
+    object-position: 43.6% 51.2%;
+  }
+  86% {
+    object-position: 47.8% 47.8%;
+  }
+  100% {
+    object-position: 50% 46%;
+  }
+}
+
+@keyframes aa-cloud-far-pan {
+  0% {
+    object-position: 56% 49%;
+  }
+  16% {
+    object-position: 59.2% 47.2%;
+  }
+  32% {
+    object-position: 64.6% 44.1%;
+  }
+  46% {
+    object-position: 68.4% 41.8%;
+  }
+  50% {
+    object-position: 70% 41%;
+  }
+  54% {
+    object-position: 68.6% 41.9%;
+  }
+  68% {
+    object-position: 63.8% 44.6%;
+  }
+  84% {
+    object-position: 58.6% 47.6%;
+  }
+  100% {
+    object-position: 56% 49%;
+  }
+}
+
+@keyframes aa-cloud-far-veil {
+  0% {
+    opacity: 0.28;
+  }
+  22% {
+    opacity: 0.31;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  78% {
+    opacity: 0.32;
+  }
+  100% {
+    opacity: 0.28;
+  }
+}
+
+@keyframes aa-cloud-near-pan {
+  0% {
+    object-position: 46% 58%;
+  }
+  18% {
+    object-position: 50.4% 59.6%;
+  }
+  36% {
+    object-position: 56.8% 61.8%;
+  }
+  48% {
+    object-position: 60.6% 63.4%;
+  }
+  50% {
+    object-position: 62% 64%;
+  }
+  52% {
+    object-position: 60.8% 63.5%;
+  }
+  66% {
+    object-position: 55.2% 61.2%;
+  }
+  84% {
+    object-position: 49.2% 59.2%;
+  }
+  100% {
+    object-position: 46% 58%;
+  }
+}
+
+@keyframes aa-cloud-near-veil {
+  0% {
+    opacity: 0.22;
+  }
+  24% {
+    opacity: 0.26;
+  }
+  50% {
+    opacity: 0.32;
+  }
+  76% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.22;
+  }
+}
+
+@keyframes aa-cloud-warm-pan {
+  0% {
+    object-position: 70% 40%;
+  }
+  20% {
+    object-position: 72.4% 41.6%;
+  }
+  40% {
+    object-position: 76.2% 44.2%;
+  }
+  50% {
+    object-position: 80% 47%;
+  }
+  60% {
+    object-position: 76.6% 44.6%;
+  }
+  80% {
+    object-position: 72.2% 41.4%;
+  }
+  100% {
+    object-position: 70% 40%;
+  }
+}
+
+@keyframes aa-cloud-warm-breathe {
+  0% {
+    opacity: 0.15;
+  }
+  28% {
+    opacity: 0.19;
+  }
+  50% {
+    opacity: 0.24;
+  }
+  72% {
+    opacity: 0.18;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.aa-figma-hero__bg {
+  position: absolute;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: none;
+  user-select: none;
+  filter: contrast(0.93) saturate(0.92) brightness(1.02);
+}
+
+/* Full Figma plate into the 900px composition — no aggressive zoom */
+.aa-figma-hero__bg--desktop {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.aa-figma-hero__bg--mobile {
+  display: none;
+}
+
+/* Subtle atmospheric depth — fades out before seam so it doesn't create a band */
+.aa-figma-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 18, 30, 0.12) 0%,
+    rgba(7, 18, 30, 0.03) 45%,
+    rgba(7, 18, 30, 0.04) 70%,
+    rgba(7, 18, 30, 0) 100%
+  );
+}
+
+.aa-figma-hero__haze {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 55% at 58% 46%,
+    rgba(240, 240, 229, 0.08) 0%,
+    transparent 64%
+  );
+}
+
+/*
+  Seam fade — above sky, below FG (window/copy/cta/logo/nav).
+  0–70% intact · 70–82% whisper · 82–92% soft · 92–100% solid cream
+*/
+.aa-figma-hero__seam-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 240, 229, 0) 0%,
+    rgba(240, 240, 229, 0) 70%,
+    rgba(240, 240, 229, 0.05) 76%,
+    rgba(240, 240, 229, 0.12) 82%,
+    rgba(240, 240, 229, 0.42) 88%,
+    rgba(240, 240, 229, 0.78) 92%,
+    rgba(240, 240, 229, 0.94) 96%,
+    #f0f0e5 100%
+  );
+}
+
+/* Extra cream cushion exactly on the join line */
+.aa-figma-hero__seam-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 12%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 240, 229, 0) 0%,
+    rgba(240, 240, 229, 0.55) 40%,
+    #f0f0e5 100%
+  );
+}
+
+.aa-figma-hero__cream-fade {
+  display: none !important;
+}
+
+/* Shop starts in the same cream — no hard edge / no layout shift of FG */
+.aa-figma-hero + #shop {
+  margin-top: 0 !important;
+  padding-top: 76px !important;
+  background: #f0f0e5 !important;
+}
+
+/* ─── Foreground layer ─── */
+.aa-figma-hero__fg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.aa-figma-hero__logo {
+  position: absolute;
+  z-index: 5;
+  left: clamp(28px, 6.94vw, 100px);
+  top: 44px;
+  width: clamp(78px, 8.61vw, 124px);
+  height: auto;
+  aspect-ratio: 124 / 83;
+  display: block;
+  line-height: 0;
+}
+
+.aa-figma-hero__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aa-figma-hero__nav {
+  position: absolute;
+  z-index: 5;
+  top: 74px;
+  right: clamp(28px, 5.8vw, 84px);
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 4.2vw, 60px);
+  margin: 0;
+  padding: 0;
+}
+
+.aa-figma-hero__nav-link {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--aa-cream);
+  font-family: "Geologica", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2.64px;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.aa-figma-hero__nav-link--active {
+  font-weight: 600;
+}
+
+.aa-figma-hero__nav-link:focus-visible {
+  outline: 2px solid var(--aa-cream);
+  outline-offset: 4px;
+}
+
+/*
+  Window slot — Journey Organic canvas fills this box.
+  No HTML shade / frame / landscape layers. No CSS open animation.
+*/
+.aa-figma-hero__window {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: min(var(--aa-window-max-w), 26.4vw);
+  max-width: var(--aa-window-max-w);
+  aspect-ratio: var(--aa-window-ratio);
+  height: auto;
+  max-height: 72%;
+  pointer-events: none;
+  overflow: hidden;
+  filter: drop-shadow(0 18px 40px rgba(22, 52, 84, 0.12));
+}
+
+/*
+  Portal camera (homepage only):
+  Scale is applied to .aa-figma-hero__window (the portal), not the inner visual.
+  Sticky overflow clips the growing portal to the viewport — no page horizontal scroll.
+  Inner Journey visual stays unscaled so frames (arco/tapa/paisaje) stay one unit.
+*/
+.aa-figma-hero[data-journey-organic] {
+  --aa-chrome-opacity: 1;
+  overflow-x: clip;
+}
+
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__window {
+  transform-origin: center center;
+  will-change: transform;
+  /* Clip spritesheet edges; the scaled SLOT may exit sticky edges (Estados 3–4). */
+  overflow: hidden;
+}
+
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__sticky {
+  /* Viewport clip only — portal can grow past layout box without page x-scroll. */
+  overflow: hidden;
+  --aa-portal-white: 0;
+}
+
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__fg-layer {
+  /* Do not trap the scaled portal; sticky already clips to viewport. */
+  overflow: visible;
+}
+
+/*
+  Chrome fade (logo / nav / copy+CTA) — absolute opacity from scroll progress.
+  No CSS transition (mobile jitter).
+*/
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__logo,
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__nav,
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__copy {
+  opacity: var(--aa-chrome-opacity, 1);
+}
+
+/*
+  Portal whiteout veil (homepage).
+  Storyboard Estado 5: progressive cream wash after landscape fill.
+  Color matches #shop Cannoli Cream for continuous handoff to the next scene.
+*/
+.aa-figma-hero[data-journey-organic] .aa-figma-hero__sticky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  background: #f0f0e5;
+  opacity: var(--aa-portal-white, 0);
+  pointer-events: none;
+}
+
+.aa-figma-hero[data-journey-organic][data-portal-scale="1.000"] .aa-figma-hero__window,
+.aa-figma-hero[data-journey-organic]:not([data-portal-scale]) .aa-figma-hero__window {
+  will-change: auto;
+}
+
+/* Journey visual fills the portal slot — frames only; parent portal owns camera scale */
+.aa-figma-hero__window .aa-organic-visual {
+  --aa-visual-scale: 1 !important;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  transform: none !important;
+  transform-origin: center center;
+  will-change: auto;
+  filter: none;
+}
+
+.aa-figma-hero__window .aa-organic-visual__poster,
+.aa-figma-hero__window .aa-organic-visual__canvas,
+.aa-figma-hero__window .aa-organic-visual__final {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: none !important;
+}
+
+.aa-figma-hero__window .aa-organic-visual__final[hidden],
+.aa-figma-hero__window .aa-organic-visual__final:not([src]),
+.aa-figma-hero__window .aa-organic-visual__final[src=""] {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+.aa-figma-hero:not([data-state="ready"]) .aa-organic-visual__final {
+  opacity: 0 !important;
+}
+
+.aa-figma-hero[data-state="static"] .aa-organic-visual__canvas,
+.aa-figma-hero[data-state="static"] .aa-organic-visual__final,
+.aa-figma-hero[data-state="fallback"] .aa-organic-visual__canvas,
+.aa-figma-hero[data-state="fallback"] .aa-organic-visual__final {
+  display: none;
+}
+
+.aa-figma-hero__copy {
+  position: absolute;
+  z-index: 5;
+  left: clamp(28px, 5.55vw, 80px);
+  top: 42%;
+  translate: 0 -40%;
+  width: min(380px, 34vw);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--aa-cream);
+  text-shadow: 0 1px 18px rgba(7, 18, 30, 0.18);
+}
+
+.aa-figma-hero__display {
+  margin: 0;
+  width: 100%;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(52px, 7.4vw, 108px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.aa-figma-hero__emotion {
+  margin: 0;
+  width: 100%;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(16px, 1.55vw, 23px);
+  line-height: 1.12;
+}
+
+.aa-figma-hero__cta {
+  box-sizing: border-box;
+  width: 164px;
+  height: 42px;
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 30px;
+  border: 0;
+  border-radius: 999px;
+  background: #386395;
+  color: var(--aa-cream);
+  font-family: "Geologica", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  box-shadow: none;
+  flex-shrink: 0;
+}
+
+.aa-figma-hero__cta:focus-visible {
+  outline: 2px solid var(--aa-cream);
+  outline-offset: 4px;
+}
+
+/* ─── Mobile · Figma 158:263 · composition 375×812 (layout propio) ─── */
+@media (max-width: 760px) {
+  /*
+    Safari normal validation baseline:
+    - Approved Figma composition unchanged (no vertical chrome compensation)
+    - No solid mobile theme-color / no flat blue bar from the page
+    - Sky = same atmosphere-mobile plate only
+    - viewport-fit=cover kept in <head>; Safari chrome white/cream is OS-owned
+  */
+  .aa-figma-hero {
+    --aa-comp-h: 812px;
+    --aa-window-max-w: 214px;
+    --aa-window-ratio: 243 / 334;
+    --aa-safe-top: max(96px, 11svh);
+    --aa-safe-bottom: max(210px, 26svh);
+    height: 500vh;
+    min-height: 500vh;
+    overflow: visible;
+    overflow-x: clip;
+    /* Under the plate only while loading — never a flat sky hex bar */
+    background-color: transparent;
+  }
+
+  .aa-figma-hero__sticky {
+    position: sticky;
+    top: 0;
+    height: var(--aa-comp-h);
+    min-height: var(--aa-comp-h);
+    overflow: hidden;
+  }
+
+  @media (min-height: 813px) {
+    .aa-figma-hero__sticky {
+      height: max(812px, 100svh);
+      min-height: 812px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aa-figma-hero {
+      height: var(--aa-comp-h);
+      min-height: var(--aa-comp-h);
+      overflow: hidden;
+    }
+
+    .aa-figma-hero__sticky {
+      position: relative;
+      height: 100%;
+      min-height: inherit;
+    }
+  }
+
+  .aa-figma-hero__bg-layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  .aa-figma-hero__bg--desktop {
+    display: none;
+  }
+
+  .aa-figma-hero__bg--mobile {
+    display: block;
+    /* Figma plate x=-180 w=735 on 375 — crop unchanged */
+    left: calc(-180 / 375 * 100%);
+    top: 0;
+    width: calc(735 / 375 * 100%);
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 38%;
+  }
+
+  /* Slight overscan only inside atmosphere so object-position can drift */
+  .aa-cloud-atmosphere .aa-figma-hero__bg--mobile {
+    left: calc((-180 / 375 * 100%) - 7%);
+    top: -5%;
+    width: calc((735 / 375 * 100%) + 14%);
+    height: 110%;
+  }
+
+  /* Mobile scrim closer to Figma 158:265, then seam-fade handles cream */
+  .aa-figma-hero__scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(7, 18, 30, 0.35) 0%,
+      rgba(7, 18, 30, 0.12) 40%,
+      rgba(7, 18, 30, 0.28) 72%,
+      rgba(7, 18, 30, 0) 100%
+    );
+  }
+
+  .aa-figma-hero__haze {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% 35%,
+      rgba(240, 240, 229, 0.05) 0%,
+      transparent 60%
+    );
+  }
+
+  .aa-figma-hero__logo {
+    left: 24px;
+    top: 26px;
+    width: 84px;
+    aspect-ratio: 84 / 56;
+  }
+
+  .aa-figma-hero__nav {
+    top: 44px;
+    right: 16px;
+    gap: 18px;
+  }
+
+  .aa-figma-hero__window {
+    left: 50%;
+    top: 34%;
+    translate: -50% -50%;
+    /* Height-based cap uses svh, never width-% (that shrank the window) */
+    width: min(
+      var(--aa-window-max-w),
+      57.1vw,
+      calc((100svh - 300px) * 243 / 334)
+    );
+    max-height: min(294px, calc(100svh - 300px));
+    aspect-ratio: 243 / 334;
+    height: auto;
+  }
+
+  /* Image 1 layout — copy bottom-anchored (not Figma absolute y=470) */
+  .aa-figma-hero__copy {
+    left: 28px;
+    right: 28px;
+    top: auto;
+    bottom: max(88px, 10svh);
+    translate: none;
+    width: auto;
+    max-width: 320px;
+    gap: 8px;
+    text-shadow: 0 2px 18px rgba(7, 18, 30, 0.35);
+  }
+
+  /* Image 3 visual scale only — Port Blair Alternate */
+  .aa-figma-hero__display {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 70px;
+    letter-spacing: -0.7px;
+    line-height: 1;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    color: #f0f0e5;
+    white-space: nowrap;
+    overflow: visible;
+    /* Micro balance: lift title+subtitle group 15px; CTA stays */
+    transform: translateY(-15px);
+  }
+
+  /* Emotion · ITC Legacy Book Italic
+     Figma 158:272 docs 32/1.16/0 — Image 1 circled visual is smaller editorial one-liner */
+  .aa-figma-hero__emotion {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 1.16;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    max-width: 320px;
+    color: #f0f0e5;
+    white-space: nowrap;
+    transform: translateY(-15px);
+  }
+
+  /* Image 1 CTA spacing */
+  .aa-figma-hero__cta {
+    margin-top: 18px;
+    position: relative;
+  }
+
+  .aa-figma-hero__cta::before {
+    content: "";
+    position: absolute;
+    inset: -8px -6px;
+  }
+}

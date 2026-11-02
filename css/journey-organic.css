@@ -1,10 +1,13 @@
-@font-face {
-  font-family: "ITC Legacy Serif";
-  src: url("preview-assets/fonts/ITC-Legacy-Serif-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
+/* ============================================================
+   ARRIVE ARUBA · Marketplace — e-actividad 3.2
+   ------------------------------------------------------------
+   css/journey-organic.css · Runtime visual de Journey Organic:
+   secuencia de fotogramas en hojas sprite dirigida por scroll,
+   con variantes desktop/mobile, poster de respaldo y respeto de
+   prefers-reduced-motion. Adaptado del proyecto de marca: sin
+   tipografías con licencia; usa la pila editorial del sitio.
+   ============================================================ */
+
 
 :root {
   --aa-star-sapphire: #386395;
@@ -15,7 +18,7 @@
   --aa-silver-soft: #eaf0f6;
   --aa-sky-light: #acd2eb;
   --aa-sky-mid: #79acd2;
-  --aa-font-serif: "ITC Legacy Serif", Georgia, serif;
+  --aa-font-serif: "Cormorant Garamond", Georgia, serif;
   --aa-font-ui: "Geologica", system-ui, sans-serif;
 }
 

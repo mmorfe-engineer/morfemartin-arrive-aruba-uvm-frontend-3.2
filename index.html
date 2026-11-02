@@ -19,6 +19,10 @@
   <link rel="stylesheet" href="css/componentes.css">
   <link rel="stylesheet" href="css/inicio.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" as="image" href="assets/img/figma-hero/atmosphere-desktop.png" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/journey/mobile/poster.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/figma-hero.css">
+  <link rel="stylesheet" href="css/journey-organic.css">
 </head>
 <body>
   <!--
@@ -58,33 +62,82 @@
 
   <main id="contenido">
 
-    <!-- ====================== HERO ====================== -->
-    <!-- La ventana del avión: motivo central de la marca. El paisaje
-         real de Aruba se mezcla con el degradado del atardecer usando
-         background-blend-mode; el sol y el vaivén siguen siendo CSS. -->
-    <section class="hero" aria-labelledby="titulo-principal">
-      <div class="contenedor hero__rejilla">
-        <div class="hero__texto">
-          <p class="ceja">Colección 2026 · Isla de Aruba</p>
-          <h1 id="titulo-principal">The island stays with you. <span class="estrella">✦</span></h1>
-          <p class="introduccion">
-            Ropa resort pensada para el momento en que bajas del avión y la
-            isla te recibe. Lino lavado, colores de zafiro y crema, y cortes
-            que acompañan el viaje mucho después del bronceado.
-          </p>
-          <div class="hero__acciones">
-            <a class="boton boton--primario" href="catalogo.html">Ver el catálogo</a>
-            <a class="boton boton--secundario" href="formulario.html">Reservar una prenda</a>
+    <!-- ====================== HERO · JOURNEY ORGANIC ====================== -->
+    <!-- La ventana del avión de la marca, ahora como pieza viva: una
+         secuencia de fotogramas (hojas sprite webp) dirigida por el
+         scroll dentro de una sección sticky de 500vh, con atmósfera de
+         nubes por capas y respaldo estático si el manifiesto no carga.
+         e-actividad 3.2: video del proyecto original integrado con
+         su runtime propio (js/journey-organic.js). -->
+    <section
+      class="aa-figma-hero aruba-scroll-section"
+      data-screen-label="01 Hero"
+      data-figma-hero-shell
+      data-journey-organic
+      data-journey-lock-scale
+      data-manifest="assets/journey/manifest.json?v=3-hq1"
+      data-fallback-poster="assets/journey/mobile/poster.webp?v=3-hq1"
+      data-scroll-length="500"
+      aria-label="Arrive Aruba — viaje de llegada a la isla"
+    >
+      <div class="aa-figma-hero__sticky">
+        <!-- Capa de fondo: atmósfera de nubes viva (solo CSS) -->
+        <div class="aa-figma-hero__bg-layer" aria-hidden="true">
+          <div class="aa-cloud-atmosphere">
+            <div class="aa-cloud-atmosphere__base">
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--desktop" src="assets/img/figma-hero/atmosphere-desktop.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--mobile" src="assets/img/figma-hero/atmosphere-mobile.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+            </div>
+            <div class="aa-cloud-atmosphere__distant" aria-hidden="true">
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--desktop" src="assets/img/figma-hero/atmosphere-desktop.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--mobile" src="assets/img/figma-hero/atmosphere-mobile.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+            </div>
+            <div class="aa-cloud-atmosphere__mist" aria-hidden="true">
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--desktop" src="assets/img/figma-hero/atmosphere-desktop.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--mobile" src="assets/img/figma-hero/atmosphere-mobile.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+            </div>
+            <div class="aa-cloud-atmosphere__warm" aria-hidden="true">
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--desktop" src="assets/img/figma-hero/atmosphere-desktop.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+          <img class="aa-figma-hero__bg aa-figma-hero__bg--mobile" src="assets/img/figma-hero/atmosphere-mobile.png" alt="" decoding="async" fetchpriority="high" width="1440" height="900" />
+            </div>
           </div>
+          <div class="aa-figma-hero__scrim"></div>
+          <div class="aa-figma-hero__haze"></div>
         </div>
 
-        <figure class="hero__ventana" aria-hidden="true">
-          <div class="ventana">
-            <span class="ventana__sol"></span>
-            <span class="ventana__mar"></span>
+        <!-- Disolución del borde inferior hacia el crema de la marca -->
+        <div class="aa-figma-hero__seam-fade" aria-hidden="true"></div>
+
+        <!-- Capa del frente: composición independiente, sin escala global -->
+        <div class="aa-figma-hero__fg-layer">
+          <a class="aa-figma-hero__logo" href="index.html" aria-label="Arrive Aruba — inicio">
+            <img src="assets/img/figma-hero/logo-desktop.png" alt="Arrive Aruba" width="124" height="83" decoding="async" />
+          </a>
+
+          <!-- Journey Organic: la única fuente visual de la ventana -->
+          <div class="aa-figma-hero__window" aria-hidden="true">
+            <div class="aa-organic-visual" data-journey-visual>
+              <img
+                class="aa-organic-visual__poster"
+                data-journey-poster
+                src="assets/journey/mobile/poster.webp?v=3-hq1"
+                alt=""
+                decoding="async"
+                fetchpriority="high"
+                width="509"
+                height="700"
+              />
+              <canvas class="aa-organic-visual__canvas" data-journey-canvas></canvas>
+              <img class="aa-organic-visual__final" data-journey-final alt="" decoding="async" hidden />
+            </div>
           </div>
-          <figcaption class="solo-lectores">Ventana del avión observando el atardecer de Aruba</figcaption>
-        </figure>
+
+          <div class="aa-figma-hero__copy">
+            <h1 class="aa-figma-hero__display" id="titulo-principal">What you felt</h1>
+            <p class="aa-figma-hero__emotion">when you arrived, take it home.</p>
+            <a class="aa-figma-hero__cta" href="catalogo.html">SKIP TO SHOP</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -93,8 +146,8 @@
          marca: el movimiento lento (Ken Burns) y el velo que garantiza
          la lectura del lema son enteramente CSS. -->
     <section class="pelicula" aria-label="Atmósfera de la isla de Aruba">
-      <img class="pelicula__foto" src="assets/img/atmosfera.jpg"
-           alt="Atmósfera de Aruba al atardecer, fotografía de la marca">
+      <!-- e-actividad 3.2: la fotografía ahora es fondo fijo (parallax CSS);
+           el velo y el lema siguen siendo hijos directos de la banda. -->
       <div class="pelicula__velo" aria-hidden="true"></div>
       <p class="pelicula__lema">«The island stays with you.»</p>
     </section>
@@ -191,6 +244,41 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ====================== CARRUSEL ====================== -->
+    <!-- e-actividad 3.2: carrusel de imágenes con scroll-snap (CSS puro):
+         cada editorial encaja al centro al deslizar. -->
+    <section class="seccion banda-blanca" aria-labelledby="titulo-carrusel">
+      <div class="contenedor">
+        <div class="cabecera-seccion cabecera-seccion--centrada">
+          <p class="ceja">Editoriales de la colección</p>
+          <h2 id="titulo-carrusel">La isla como fondo de escaparate</h2>
+          <p class="cabecera-seccion__intro">
+            Desliza la banda y recorre los editoriales de la marca: cada
+            fotografía encaja suavemente en su lugar.
+          </p>
+        </div>
+      </div>
+
+      <div class="carrusel" role="region" aria-label="Carrusel de editoriales de la marca">
+        <figure class="carrusel__slide">
+          <img src="assets/img/sunset-01.jpg" alt="Editorial resort: polo frente al mar de Aruba">
+          <figcaption>Resort · la prenda ante el caribe</figcaption>
+        </figure>
+        <figure class="carrusel__slide">
+          <img src="assets/img/sunset-02.jpg" alt="Editorial de playa: camisería liviana al sol">
+          <figcaption>Beach · camisería liviana</figcaption>
+        </figure>
+        <figure class="carrusel__slide">
+          <img src="assets/img/sunset-03.jpg" alt="Editorial island stays: estancia en la isla">
+          <figcaption>Island stays · quedarse en la isla</figcaption>
+        </figure>
+        <figure class="carrusel__slide">
+          <img src="assets/img/atmosfera.jpg" alt="Atmósfera de Aruba al atardecer, fotografía de la marca">
+          <figcaption>Atmósfera · el atardecer de Aruba</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -349,6 +437,8 @@
       </p>
     </div>
   </footer>
+  <!-- Runtime de Journey Organic: se monta solo sobre [data-journey-organic] -->
+  <script src="js/journey-organic.js" defer></script>
 </body>
 </html>
 

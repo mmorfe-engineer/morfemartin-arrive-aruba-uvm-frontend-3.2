@@ -184,3 +184,71 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+
+/* ============================================================
+   9 · ACORDEÓN DE LA FICHA TÉCNICA (details/summary)
+   e-actividad 3.2: cada panel se despliega con HTML5 nativo.
+   El marcador por defecto se reemplaza por un guion editorial
+   que rota al abrir el panel; el detalle no coincide con la
+   transición nativa, así que la apertura es directa y honesta.
+   ============================================================ */
+.acordeon {
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.acordeon__titulo {
+  margin: 0 0 var(--espacio-1);
+  font-family: var(--fuente-editorial);
+  font-size: 1.4rem;
+  color: var(--azul-zafiro-profundo);
+}
+
+.acordeon__panel {
+  border: var(--borde-fino);
+  border-radius: var(--radio-md);
+  background: var(--crema-cannoli);
+  overflow: hidden;
+}
+
+.acordeon__panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espacio-3) var(--espacio-4);
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--azul-zafiro-profundo);
+  list-style: none;
+  transition: background var(--duracion-rapida) var(--curva-suave);
+}
+
+.acordeon__panel summary::-webkit-details-marker { display: none; }
+
+.acordeon__panel summary::after {
+  content: "+";
+  font-family: var(--fuente-editorial);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--azul-zafiro);
+  transition: transform var(--duracion-rapida) var(--curva-suave);
+}
+
+/* Panel abierto: el + se convierte en × girando 45 grados */
+.acordeon__panel[open] summary::after { transform: rotate(45deg); }
+.acordeon__panel[open] summary {
+  border-bottom: var(--borde-fino);
+  background: rgba(56, 99, 149, 0.06);
+}
+
+.acordeon__panel summary:hover { background: rgba(56, 99, 149, 0.08); }
+.acordeon__panel summary:focus-visible {
+  outline: 2px solid var(--azul-zafiro);
+  outline-offset: 2px;
+}
+
+.acordeon__panel p {
+  margin: 0;
+  padding: var(--espacio-3) var(--espacio-4);
+  color: var(--tinta-suave);
+}

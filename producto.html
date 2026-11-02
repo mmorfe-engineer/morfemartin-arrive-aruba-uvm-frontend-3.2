@@ -134,32 +134,24 @@
             Reservar esta prenda
           </a>
 
-          <!-- Ficha técnica: tabla con los datos reales de la prenda -->
-          <table class="tabla producto__ficha">
-            <caption>Ficha técnica</caption>
-            <tbody>
-              <tr>
-                <th scope="row">Material</th>
-                <td>Lino lavado 100 %, 140 g/m²</td>
-              </tr>
-              <tr>
-                <th scope="row">Corte</th>
-                <td>Holgado, hombro caído, base recta</td>
-              </tr>
-              <tr>
-                <th scope="row">Color</th>
-                <td>Azul zafiro sobre hilo crema</td>
-              </tr>
-              <tr>
-                <th scope="row">Cuidado</th>
-                <td>Lavar en frío, secar a la sombra</td>
-              </tr>
-              <tr>
-                <th scope="row">Origen</th>
-                <td>Confeccionada en el taller de Aruba</td>
-              </tr>
-            </tbody>
-          </table>
+          <!-- Ficha técnica en acordeón (e-actividad 3.2): los datos
+               reales de la prenda se despliegan con details/summary,
+               HTML5 nativo, sin una línea de JavaScript. -->
+          <div class="acordeon">
+            <h3 class="acordeon__titulo">Ficha técnica</h3>
+            <details class="acordeon__panel" open>
+              <summary>Material y corte</summary>
+              <p>Lino lavado 100 %, 140 g/m². Corte holgado, hombro caído y base recta.</p>
+            </details>
+            <details class="acordeon__panel">
+              <summary>Color y origen</summary>
+              <p>Azul zafiro sobre hilo crema, confeccionada en el taller de Aruba.</p>
+            </details>
+            <details class="acordeon__panel">
+              <summary>Cuidado de la prenda</summary>
+              <p>Lavar en frío y secar a la sombra: el lino agradece el aire del mar.</p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
