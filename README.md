@@ -3,7 +3,7 @@
 [![Validación del sitio](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/validate.yml/badge.svg)](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/validate.yml)
 [![Despliegue en Pages](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/deploy-pages.yml)
 [![Sitio publicado](https://img.shields.io/badge/sitio-GitHub_Pages-121013?logo=githubpages&logoColor=white)](https://mmorfe-engineer.github.io/morfemartin-arrive-aruba-uvm-frontend-3.2/)
-[![Diseño en Figma](https://img.shields.io/badge/dise%C3%B1o-Figma-F24E1E?logo=figma&logoColor=white)](ENLACE-AL-ARCHIVO-DE-FIGMA)
+[![Diseño en Figma](https://img.shields.io/badge/dise%C3%B1o-Figma-F24E1E?logo=figma&logoColor=white)](https://www.figma.com/design/yYdy306Qxg2WYFEjMPX2GZ/Arrive-Aruba-%C2%B7-e-actividad-3.2-ENTREGA)
 ![HTML5](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=black)
@@ -21,7 +21,7 @@ cátedra de Front End.
 **Universidad Valle del Momboy** · Cátedra de Front End · Profesor: Ing. Anggelo Huz
 
 **Sitio publicado (GitHub Pages):** https://mmorfe-engineer.github.io/morfemartin-arrive-aruba-uvm-frontend-3.2/
-**Diseño en Figma:** [Arrive Aruba · e-actividad 3.2](ENLACE-AL-ARCHIVO-DE-FIGMA)
+**Diseño en Figma:** [Arrive Aruba · e-actividad 3.2](https://www.figma.com/design/yYdy306Qxg2WYFEjMPX2GZ/Arrive-Aruba-%C2%B7-e-actividad-3.2-ENTREGA)
 
 ---
 
@@ -120,7 +120,7 @@ vectoriales en la carpeta [`docs/figma/`](docs/figma) del repositorio; cada
 tarjeta muestra la vista superior de la página y el enlace abre el diseño
 completo con todas sus secciones.
 
-**Archivo de Figma (editable, por capas):** [Arrive Aruba · e-actividad 3.2](ENLACE-AL-ARCHIVO-DE-FIGMA)
+**Archivo de Figma (editable, por capas):** [Arrive Aruba · e-actividad 3.2](https://www.figma.com/design/yYdy306Qxg2WYFEjMPX2GZ/Arrive-Aruba-%C2%B7-e-actividad-3.2-ENTREGA)
 
 ### Design tokens
 
