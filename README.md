@@ -1,5 +1,15 @@
 # Arrive Aruba · e-actividad 3.2 — Frontend
 
+[![Validación del sitio](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/validate.yml/badge.svg)](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/validate.yml)
+[![Despliegue en Pages](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/mmorfe-engineer/morfemartin-arrive-aruba-uvm-frontend-3.2/actions/workflows/deploy-pages.yml)
+[![Sitio publicado](https://img.shields.io/badge/sitio-GitHub_Pages-121013?logo=githubpages&logoColor=white)](https://mmorfe-engineer.github.io/morfemartin-arrive-aruba-uvm-frontend-3.2/)
+[![Diseño en Figma](https://img.shields.io/badge/dise%C3%B1o-Figma-F24E1E?logo=figma&logoColor=white)](ENLACE-AL-ARCHIVO-DE-FIGMA)
+![HTML5](https://img.shields.io/badge/HTML-5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS-3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=black)
+![webpack](https://img.shields.io/badge/webpack-5-8DD6F9?logo=webpack&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=nodedotjs&logoColor=white)
+
 Sitio web de la marca de ropa resort **Arrive Aruba**: seis páginas responsivas
 (inicio, catálogo, producto, formulario de reserva, nosotros y mis pedidos)
 empaquetadas con **webpack**, que minifica el HTML y el CSS de producción.
